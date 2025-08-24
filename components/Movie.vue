@@ -20,11 +20,11 @@
           <img
             :src="item.image"
             :alt="item.title"
-            class="w-[200px] h-[280px] object-cover rounded-md cursor-pointer transition duration-300 hover:opacity-30"
+            class="w-[200px] h-[280px] object-cover rounded-md cursor-pointer transition duration-300 group-hover:opacity-30"
           />
 
           <!-- overlay hover -->
-          <AnimeOverlay :item="item" />
+          <AnimeOverlay :item="item" class="absolute inset-0" />
 
           <div class="mt-2 flex items-center justify-center space-x-2">
             <UIcon

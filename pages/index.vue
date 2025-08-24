@@ -51,7 +51,6 @@
               slug="phim-moi-cap-nhat"
             />
             <!-- co gi moi  -->
-
             <Movie
               :items="animeNewAdded.slice(0, 12)"
               title="Có Gì Mới"

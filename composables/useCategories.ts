@@ -1,0 +1,86 @@
+export const useCategories = () => {
+  return [
+    {
+      title: "One Piece",
+      description: "Vua Hải Tặc",
+      number: "01",
+      img: "/imgs/01.webp",
+      slug: "one-piece",
+      view: "123",
+    },
+    {
+      title: "Kimetsu no Yaiba",
+      description: " Thanh Gươm Diệt Quỷ",
+      img: "/imgs/02.webp",
+      number: "02",
+      slug: "kimetsu-no-yaiba",
+      view: "123",
+    },
+    {
+      title: "Boku no Hero A",
+      number: "03",
+      description: " Thanh Gươm Diệt Quỷ",
+
+      img: "/imgs/03.webp",
+      slug: "boku-no-hero-a",
+      view: "1123",
+    },
+    {
+      title: "Fairy Tail: 100-y",
+      description: " Thanh Gươm Diệt Quỷ",
+      number: "04",
+      img: "/imgs/04.webp",
+      slug: "fairy-tail-100y",
+      view: "133",
+    },
+    {
+      title: "Shinmai Ossan",
+      description: " Thanh Gươm Diệt Quỷ",
+      number: "05",
+      img: "/imgs/05.webp",
+      slug: "shinmai-ossan",
+      view: "12312",
+    },
+    {
+      title: "Shikanoko Nok",
+      description: " Thanh Gươm Diệt Quỷ",
+      number: "06",
+      img: "/imgs/06.webp",
+      slug: "shikanoko-nok",
+      view: "12123",
+    },
+    {
+      title: "Make Heroine g",
+      description: " Thanh Gươm Diệt Quỷ",
+      number: "07",
+      img: "/imgs/07.webp",
+      slug: "make-heroine-g",
+      view: "12312",
+    },
+    {
+      title: "Kaiju 8-gou",
+      number: "08",
+      description: " Thanh Gươm Diệt Quỷ",
+      img: "/imgs/08.webp",
+      slug: "kaiju-8-gou",
+      view: "12123",
+    },
+    {
+      title: "Make Heroine g",
+      number: "09",
+      img: "/imgs/06.webp",
+      description: " Thanh Gươm Diệt Quỷ",
+      slug: "make-heroine-g",
+      view: "12312",
+    },
+    {
+      title: "Kaiju 8-gou",
+      number: "10",
+      img: "/imgs/05.webp",
+      description:
+        " Thanh Gươm Diệt Quỷ Thanh Gươm Diệt QuỷThanh Gươm Diệt Quỷ ",
+      slug: "kaiju-8-gou",
+      view: "12123",
+    },
+  ];
+};

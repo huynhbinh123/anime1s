@@ -6,6 +6,10 @@
       :modules="modules"
       class="w-full h-[500px] rounded-lg"
       loop
+      :navigation="{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }"
     >
       <SwiperSlide v-for="(item, i) in movieList" :key="i">
         <img
@@ -27,7 +31,7 @@
             <div class="flex items-center gap-4 mb-4">
               <span class="rounded flex mt-0.5 items-center gap-1"
                 ><UIcon
-                  name="ic:twotone-play-circle-outline"
+                  name="material-symbols:play-arrow-rounded"
                   size="20"
                   class="bg-white"
                 />
@@ -35,16 +39,16 @@
               >
 
               <span class="px-3 py-1 rounded">{{ item.veiw }} </span>
-              <span
+              <div
                 class="p-1 rounded bg-[#b0e3af] text-xs font-bold text-black flex items-center"
               >
                 <UIcon
                   name="tabler:badge-cc-filled"
                   size="15"
-                  class="bg-black mt-0.5"
+                  class="bg-black"
                 />
-                {{ item.ccNumber }}
-              </span>
+                <span class="ml-1">{{ item.ccNumber }}</span>
+              </div>
               <span
                 class="p-1 text-black font-bold text-xs rounded bg-[#7ecaec]"
               >
@@ -55,21 +59,22 @@
 
             <div class="flex items-center space-x-4">
               <div
-                class="bg-[#ffbade] flex items-center hover:bg-[#f1c3db] transition cursor-pointer rounded-3xl px-2 py-2 gap-1"
+                class="bg-[#ffbade] flex items-center hover:bg-[#f1c3db] transition cursor-pointer rounded-3xl px-2 py-1 gap-1"
               >
                 <UIcon
-                  name="ic:twotone-play-circle-outline"
+                  name="material-symbols:play-circle-rounded"
                   size="25"
                   class="bg-black"
                 />
                 <NuxtLink :to="item.slugMovie"
-                  ><UButton class="text-black rounded-3xl cursor-pointer"
+                  ><UButton
+                    class="text-black bg-[#ffbade] rounded-3xl cursor-pointer"
                     >Xem Anime</UButton
                   ></NuxtLink
                 >
               </div>
               <div
-                class="bg-gray-500 flex items-center transition cursor-pointer rounded-3xl px-2 py-2 gap-1"
+                class="bg-gray-500 flex items-center transition cursor-pointer rounded-3xl px-2 py-1 gap-1"
               >
                 <UIcon
                   name="pajamas:information"
@@ -77,7 +82,8 @@
                   class="bg-[#ffbade]"
                 />
                 <NuxtLink :to="item.slugInfo"
-                  ><UButton class="text-white rounded-3xl cursor-pointer"
+                  ><UButton
+                    class="text-white bg-gray-500 rounded-3xl cursor-pointer"
                     >Thông tin</UButton
                   ></NuxtLink
                 >
@@ -86,6 +92,9 @@
           </div>
         </div>
       </SwiperSlide>
+      <!-- Nút Prev/Next -->
+      <div class="swiper-button-prev !text-[#ffbade]"></div>
+      <div class="swiper-button-next !text-[#ffbade]"></div>
     </Swiper>
   </div>
 </template>
@@ -93,8 +102,9 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-const modules = [Pagination];
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
+const modules = [Pagination, Navigation];
 
 const movieList = [
   {
@@ -105,7 +115,7 @@ const movieList = [
     image: "/imgs/rank1.webp",
     description:
       "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.",
-    slugMovie: "/one-piece/tap-1201",
+    slugMovie: "/phim/one-piece/tap-1201",
     slugInfo: "/phim/one-piece",
   },
   {
@@ -116,7 +126,7 @@ const movieList = [
     image: "/imgs/rank2.webp",
     description:
       "Dandadan là bộ anime với những trận chiến siêu nhiên và hài hước giữa các nhân vật học sinh.",
-    slugMovie: "/dandadan/tap-1202",
+    slugMovie: "/phim/dandadan/tap-1202",
     slugInfo: "/phim/dandadan",
   },
   {
@@ -127,7 +137,7 @@ const movieList = [
     image: "/imgs/rank3.webp",
     description:
       "Attack on Titan kể về cuộc chiến sinh tồn của con người chống lại những người khổng lồ Titan tấn công thế giới.",
-    slugMovie: "/attack-on-titan/tap-1203",
+    slugMovie: "/phim/attack-on-titan/tap-1203",
     slugInfo: "/phim/attack-on-titan",
   },
   {
@@ -138,7 +148,7 @@ const movieList = [
     image: "/imgs/rank4.webp",
     description:
       "Demon Slayer theo chân Tanjiro Kamado trong hành trình diệt quỷ cứu em gái và bảo vệ thế giới loài người.",
-    slugMovie: "/demon-slayer/tap-1204",
+    slugMovie: "/phim/demon-slayer/tap-1204",
     slugInfo: "/phim/demon-slayer",
   },
   {
@@ -149,7 +159,7 @@ const movieList = [
     image: "/imgs/rank5.webp",
     description:
       "My Hero Academia là câu chuyện về Izuku Midoriya và các học sinh trường Anh Hùng trong việc luyện tập và chiến đấu.",
-    slugMovie: "/my-hero-academia/tap-1205",
+    slugMovie: "/phim/my-hero-academia/tap-1205",
     slugInfo: "/phim/my-hero-academia",
   },
   {
@@ -160,7 +170,7 @@ const movieList = [
     image: "/imgs/rank6.webp",
     description:
       "Jujutsu Kaisen kể về Yuji Itadori chiến đấu chống lại lời nguyền và bảo vệ thế giới khỏi quỷ dữ.",
-    slugMovie: "/jujutsu-kaisen/tap-1206",
+    slugMovie: "/phim/jujutsu-kaisen/tap-1206",
     slugInfo: "/phim/jujutsu-kaisen",
   },
   {
@@ -171,7 +181,7 @@ const movieList = [
     image: "/imgs/rank7.webp",
     description:
       "Fullmetal Alchemist kể về anh em Edward và Alphonse Elric trong hành trình tìm kiếm Hòn đá Triết gia để phục hồi cơ thể.",
-    slugMovie: "/fullmetal-alchemist/tap-1207",
+    slugMovie: "/phim/fullmetal-alchemist/tap-1207",
     slugInfo: "/phim/fullmetal-alchemist",
   },
   {
@@ -182,7 +192,7 @@ const movieList = [
     image: "/imgs/rank8.webp",
     description:
       "Death Note kể về Light Yagami phát hiện quyển sổ tử thần và cuộc chiến trí tuệ chống lại thám tử L.",
-    slugMovie: "/death-note/tap-1208",
+    slugMovie: "/phim/death-note/tap-1208",
     slugInfo: "/phim/death-note",
   },
 ];

@@ -82,7 +82,7 @@ const posts = [
   <div class="">
     <h2 class="text-pink-300 font-bold text-2xl mb-3">Thể loại</h2>
     <div class="bg-[#2a293b] p-6 rounded-lg">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div class="grid grid-cols-2 gap-3">
         <NuxtLink
           v-for="(cat, index) in displayedCategories"
           :key="index"

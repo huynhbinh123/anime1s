@@ -28,7 +28,7 @@
 
           <div class="mt-2 flex items-center justify-center space-x-2">
             <UIcon
-              name="material-symbols:play-arrow"
+              name="material-symbols:play-arrow-rounded"
               size="70"
               class="text-white absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition duration-300"
             />

@@ -10,17 +10,21 @@
           :key="anime.slug"
           class="flex flex-col items-center justify-center"
         >
-          <NuxtLink :to="anime.slug" class="relative w-[170px] h-[220px]">
+          <NuxtLink
+            :to="`/phim/${anime.slug}`"
+            class="relative w-[170px] h-[220px]"
+          >
             <img
               :src="anime.img"
               :alt="anime.title"
               class="w-full h-full object-cover rounded-md"
             />
-            <p
-              class="absolute bottom-10 left-0 text-white text-xl font-bold transform -rotate-90 origin-bottom-left whitespace-nowrap"
+            <div
+              class="absolute bottom-10 left-0 text-white text-lg font-bold transform -rotate-90 origin-bottom-left whitespace-nowrap max-w-[150px] overflow-hidden text-ellipsis"
             >
               {{ anime.title }}
-            </p>
+            </div>
+
             <span
               class="absolute bottom-0 -left-6 mt-2 text-pink-300 font-bold text-lg"
             >

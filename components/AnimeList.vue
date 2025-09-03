@@ -25,7 +25,7 @@
         >
 
         <p class="text-gray-300 text-sm line-clamp-1 mt-1">
-          {{ item.englishTitle }}
+          {{ item.name }}
         </p>
         <div class="mt-2 flex items-center space-x-2">
           <span
@@ -54,7 +54,7 @@ import { defineProps } from "vue";
 
 interface AnimeItem {
   title: string;
-  englishTitle: string;
+  name: string;
   episode: number;
   type: "TV" | "MOVIE";
   image: string;

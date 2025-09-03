@@ -4,6 +4,7 @@
       <h1 class="text-pink-300 font-bold text-2xl">{{ title }}</h1>
       <NuxtLink
         :to="`/${slug}`"
+        v-if="props.isShow"
         class="text-sm text-gray-400 flex items-center justify-center gap-1 cursor-pointer hover:text-white"
       >
         <span class="">Xem thêm</span>
@@ -63,7 +64,7 @@
         <p
           class="mt-2 text-sm text-gray-300 text-start line-clamp-1 overflow-hidden"
         >
-          {{ item.englishTitle }}
+          {{ item.name }}
         </p>
       </li>
     </ul>
@@ -75,7 +76,7 @@ import { defineProps } from "vue";
 
 interface AnimeItem {
   title: string;
-  englishTitle: string;
+  name: string;
   episode: number;
   type: "TV" | "MOVIE";
   image: string;
@@ -87,5 +88,6 @@ const props = defineProps<{
   title: string;
   items: AnimeItem[];
   slug: string;
+  isShow?: boolean;
 }>();
 </script>

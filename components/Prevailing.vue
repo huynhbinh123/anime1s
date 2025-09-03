@@ -15,7 +15,7 @@
             class="relative w-[170px] h-[220px]"
           >
             <img
-              :src="anime.img"
+              :src="anime.image"
               :alt="anime.title"
               class="w-full h-full object-cover rounded-md"
             />

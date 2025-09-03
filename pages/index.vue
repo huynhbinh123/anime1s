@@ -30,6 +30,7 @@
 
           <section>
             <h2 class="text-pink-300 font-bold text-xl mb-4">Movie Mới</h2>
+
             <AnimeList :items="movieNew.slice(0, 5)" slug="moive-moi" />
           </section>
 
@@ -47,12 +48,14 @@
           <div class="col-span-6">
             <Movie
               :items="animeNewAdded.slice(0, 12)"
+              :isShow="true"
               title="Phim Mới Cập Nhật"
               slug="phim-moi-cap-nhat"
             />
             <!-- co gi moi  -->
             <Movie
               :items="animeNewAdded.slice(0, 12)"
+              :isShow="true"
               title="Có Gì Mới"
               slug="co-gi-moi"
               class="mt-10"
@@ -70,265 +73,9 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-const animeNewAdded = ref([
-  {
-    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
-    englishTitle: "Reborn as a Vending Machine, I Now Wander the...",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "jidou-hanbaiki",
-    view: "0",
-  },
-  {
-    title: "Kanojo, Okarishimasu 4th Season",
-    englishTitle: "Rent-a-Girlfriend Season 4",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kanojo-okarishimasu-4",
-    view: "0",
-  },
-  {
-    title: "Meitantei Conan",
-    englishTitle: "Thám Tử Lừng Danh Conan",
-    episode: 1140,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "meitantei-conan",
-    view: "0",
-  },
-  {
-    title: "Mikadono Sanshimai wa Angai, Choroi.",
-    englishTitle: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "mikadono-sanshimai",
-    view: "0",
-  },
-  {
-    title: "Sakamoto Days Part 2",
-    englishTitle: "SAKAMOTO DAYS Cour 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "sakamoto-days-part-2",
-    view: "0",
-  },
-  {
-    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
-    englishTitle: "Reborn as a Vending Machine, I Now Wander the...",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "jidou-hanbaiki",
-    view: "0",
-  },
-  {
-    title: "Kanojo, Okarishimasu 4th Season",
-    englishTitle: "Rent-a-Girlfriend Season 4",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kanojo-okarishimasu-4",
-    view: "0",
-  },
-  {
-    title: "Meitantei Conan",
-    englishTitle: "Thám Tử Lừng Danh Conan",
-    episode: 1140,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "meitantei-conan",
-    view: "0",
-  },
-  {
-    title: "Mikadono Sanshimai wa Angai, Choroi.",
-    englishTitle: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "mikadono-sanshimai",
-    view: "0",
-  },
-  {
-    title: "Sakamoto Days Part 2",
-    englishTitle: "SAKAMOTO DAYS Cour 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "sakamoto-days-part-2",
-    view: "0",
-  },
-  {
-    title: "Kanojo, Okarishimasu 4th Season",
-    englishTitle: "Rent-a-Girlfriend Season 4",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kanojo-okarishimasu-4",
-    view: "0",
-  },
-  {
-    title: "Meitantei Conan",
-    englishTitle: "Thám Tử Lừng Danh Conan",
-    episode: 1140,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "meitantei-conan",
-    view: "0",
-  },
-  {
-    title: "Mikadono Sanshimai wa Angai, Choroi.",
-    englishTitle: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "mikadono-sanshimai",
-    view: "0",
-  },
-  {
-    title: "Sakamoto Days Part 2",
-    englishTitle: "SAKAMOTO DAYS Cour 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "sakamoto-days-part-2",
-    view: "0",
-  },
-  {
-    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
-    englishTitle: "Reborn as a Vending Machine, I Now Wander the...",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "jidou-hanbaiki",
-    view: "0",
-  },
-  {
-    title: "Kanojo, Okarishimasu 4th Season",
-    englishTitle: "Rent-a-Girlfriend Season 4",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kanojo-okarishimasu-4",
-    view: "0",
-  },
-  {
-    title: "Meitantei Conan",
-    englishTitle: "Thám Tử Lừng Danh Conan",
-    episode: 1140,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "meitantei-conan",
-    view: "0",
-  },
-  {
-    title: "Mikadono Sanshimai wa Angai, Choroi.",
-    englishTitle: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "mikadono-sanshimai",
-    view: "0",
-  },
-  {
-    title: "Sakamoto Days Part 2",
-    englishTitle: "SAKAMOTO DAYS Cour 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "sakamoto-days-part-2",
-    view: "0",
-  },
-]);
-
-const animeRecentlyUpdated = ref([
-  {
-    title: "Grand Blue Season 2",
-    englishTitle: "Cùng học bơi nào phần 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "grand-blue-season-2",
-  },
-  {
-    title: "Clevatess: Majuu no Ou to Akago to...",
-    englishTitle: "Clevatess",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "clevatess",
-  },
-  {
-    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
-    englishTitle: "Reborn as a Vending Machine, I Now Wander the...",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "jidou-hanbaiki",
-  },
-  {
-    title: "Kakkou no Iinazuke Season 2",
-    englishTitle: "Cặp Đôi Tư HỮ Phần 2",
-    episode: 6,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kakkou-no-iinazuke-2",
-  },
-  {
-    title: "Kanojo, Okarishimasu 4th Season",
-    englishTitle: "Rent-a-Girlfriend Season 4",
-    episode: 7,
-    type: "TV",
-    image: "/imgs/movie22.webp",
-    slug: "kanojo-okarishimasu-4",
-  },
-]);
-
-const movieNew = ref([
-  {
-    title: "Dragon Ball Z Movie 08: Moetsukiro!! Nessen...",
-    englishTitle: "Bảy Viên Ngọc Rồng Z Broly – Siêu Saiyan Huyền Thoại",
-    episode: 1,
-    type: "MOVIE",
-    image: "/imgs/movie22.webp",
-    slug: "dragon-ball-z-movie-08",
-  },
-  {
-    title: "Meitantei Conan Movie 09: Suihei Senjou no...",
-    englishTitle: "Thám Tử Lừng Danh Conan Movie 09: Âm Mưu Trên...",
-    episode: 2,
-    type: "MOVIE",
-    image: "/imgs/movie22.webp",
-    slug: "conan-movie-09",
-  },
-  {
-    title: "Shingeki no Kyojin Movie: Kanketsu-hen –...",
-    englishTitle: "Đại Chiến Người Khổng Lồ: Lần Tấn Công Cuối Cùng",
-    episode: 1,
-    type: "MOVIE",
-    image: "/imgs/movie22.webp",
-    slug: "aot-final-movie",
-  },
-  {
-    title: "Shika no Ou: Yuna to Yakusoku no Tabi",
-    englishTitle: "The Deer King",
-    episode: 1,
-    type: "MOVIE",
-    image: "/imgs/movie22.webp",
-    slug: "deer-king",
-  },
-  {
-    title: "Na Tra 2",
-    englishTitle: "Nezha: Mo tong nao hai",
-    episode: 1,
-    type: "MOVIE",
-    image: "/imgs/movie22.webp",
-    slug: "na-tra-2",
-  },
-]);
+import {
+  animeNewAdded,
+  animeRecentlyUpdated,
+  movieNew,
+} from "~/composables/animeData";
 </script>

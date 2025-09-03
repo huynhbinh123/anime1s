@@ -50,7 +50,7 @@
 <script setup lang="ts">
 interface AnimeItem {
   title: string;
-  englishTitle: string;
+  name: string;
   episode: number;
   type: "TV" | "MOVIE";
   image: string;

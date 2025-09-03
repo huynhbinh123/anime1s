@@ -38,7 +38,7 @@
                 TV</span
               >
 
-              <span class="px-3 py-1 rounded">{{ item.veiw }} </span>
+              <span class="px-3 py-1 rounded">{{ item.view }} </span>
               <div
                 class="p-1 rounded bg-[#b0e3af] text-xs font-bold text-black flex items-center"
               >
@@ -66,7 +66,7 @@
                   size="25"
                   class="bg-black"
                 />
-                <NuxtLink :to="item.slugMovie"
+                <NuxtLink :to="item.ep"
                   ><UButton
                     class="text-black bg-[#ffbade] rounded-3xl cursor-pointer"
                     >Xem Anime</UButton
@@ -81,7 +81,7 @@
                   size="25"
                   class="bg-[#ffbade]"
                 />
-                <NuxtLink :to="item.slugInfo"
+                <NuxtLink :to="`/phim/${item.slug}`"
                   ><UButton
                     class="text-white bg-gray-500 rounded-3xl cursor-pointer"
                     >Thông tin</UButton
@@ -104,98 +104,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
-const modules = [Pagination, Navigation];
+import { useMovieList } from "~/composables/useCategories";
 
-const movieList = [
-  {
-    title: "One Piece",
-    rank: "#1 Rank",
-    ccNumber: "13",
-    veiw: "24M",
-    image: "/imgs/rank1.webp",
-    description:
-      "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.",
-    slugMovie: "/phim/one-piece/tap-1201",
-    slugInfo: "/phim/one-piece",
-  },
-  {
-    title: "Dandadan",
-    rank: "#2 Rank",
-    ccNumber: "13",
-    veiw: "23M",
-    image: "/imgs/rank2.webp",
-    description:
-      "Dandadan là bộ anime với những trận chiến siêu nhiên và hài hước giữa các nhân vật học sinh.",
-    slugMovie: "/phim/dandadan/tap-1202",
-    slugInfo: "/phim/dandadan",
-  },
-  {
-    title: "Attack on Titan",
-    rank: "#3 Rank",
-    ccNumber: "12",
-    veiw: "22M",
-    image: "/imgs/rank3.webp",
-    description:
-      "Attack on Titan kể về cuộc chiến sinh tồn của con người chống lại những người khổng lồ Titan tấn công thế giới.",
-    slugMovie: "/phim/attack-on-titan/tap-1203",
-    slugInfo: "/phim/attack-on-titan",
-  },
-  {
-    title: "Demon Slayer",
-    rank: "#4 Rank",
-    ccNumber: "12",
-    veiw: "24M",
-    image: "/imgs/rank4.webp",
-    description:
-      "Demon Slayer theo chân Tanjiro Kamado trong hành trình diệt quỷ cứu em gái và bảo vệ thế giới loài người.",
-    slugMovie: "/phim/demon-slayer/tap-1204",
-    slugInfo: "/phim/demon-slayer",
-  },
-  {
-    title: "My Hero Academia",
-    rank: "#5 Rank",
-    ccNumber: "12",
-    veiw: "24M",
-    image: "/imgs/rank5.webp",
-    description:
-      "My Hero Academia là câu chuyện về Izuku Midoriya và các học sinh trường Anh Hùng trong việc luyện tập và chiến đấu.",
-    slugMovie: "/phim/my-hero-academia/tap-1205",
-    slugInfo: "/phim/my-hero-academia",
-  },
-  {
-    title: "Jujutsu Kaisen",
-    rank: "#6 Rank",
-    ccNumber: "15",
-    veiw: "24M",
-    image: "/imgs/rank6.webp",
-    description:
-      "Jujutsu Kaisen kể về Yuji Itadori chiến đấu chống lại lời nguyền và bảo vệ thế giới khỏi quỷ dữ.",
-    slugMovie: "/phim/jujutsu-kaisen/tap-1206",
-    slugInfo: "/phim/jujutsu-kaisen",
-  },
-  {
-    title: "Fullmetal Alchemist",
-    rank: "#7 Rank",
-    ccNumber: "12",
-    veiw: "24M",
-    image: "/imgs/rank7.webp",
-    description:
-      "Fullmetal Alchemist kể về anh em Edward và Alphonse Elric trong hành trình tìm kiếm Hòn đá Triết gia để phục hồi cơ thể.",
-    slugMovie: "/phim/fullmetal-alchemist/tap-1207",
-    slugInfo: "/phim/fullmetal-alchemist",
-  },
-  {
-    title: "Death Note",
-    rank: "#8 Rank",
-    ccNumber: "12",
-    veiw: "24M",
-    image: "/imgs/rank8.webp",
-    description:
-      "Death Note kể về Light Yagami phát hiện quyển sổ tử thần và cuộc chiến trí tuệ chống lại thám tử L.",
-    slugMovie: "/phim/death-note/tap-1208",
-    slugInfo: "/phim/death-note",
-  },
-];
+const movieList = useMovieList();
+const modules = [Pagination, Navigation];
 </script>
 
 <style scoped></style>

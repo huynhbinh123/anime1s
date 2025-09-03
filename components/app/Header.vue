@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 z-30 backdrop-blur-lg bg-[#181a2c]/70 px-20"
+    class="w-full z-100 h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 backdrop-blur-lg bg-[#181a2c]/70 px-20"
   >
     <!-- content header -->
     <div class="flex items-center justify-center gap-4">

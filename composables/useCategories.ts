@@ -3,12 +3,15 @@ export const useCategories = () => {
     {
       title: "One Piece",
       name: "Vua Hải Tặc",
+      number: "01",
       description:
         "One Piece là bộ anime huyền thoại kể về hành trình của Monkey D. Luffy – một cậu bé có ước mơ trở thành Vua Hải Tặc. Luffy cùng đồng đội của mình phiêu lưu trên đại dương để tìm kiếm kho báu One Piece mà Vua Hải Tặc Gol D. Roger để lại.",
-      number: "01",
-      img: "/imgs/01.webp",
+      ccNumber: "13",
+      image: "/imgs/01.webp",
       slug: "one-piece",
-      view: "123",
+      ep: "/phim/one-piece/tap-1201",
+      view: "12",
+      tags: ["Action", "Adventure", "Fantasy", "Shounen"],
     },
     {
       title: "Kimetsu no Yaiba",
@@ -16,9 +19,12 @@ export const useCategories = () => {
       description:
         "Câu chuyện xoay quanh Kamado Tanjiro – một cậu bé tốt bụng có gia đình bị quỷ sát hại. Tanjiro cùng em gái Nezuko (bị biến thành quỷ) tham gia đội Diệt Quỷ để tìm cách chữa trị cho em và tiêu diệt quỷ dữ.",
       number: "02",
-      img: "/imgs/02.webp",
+      ccNumber: "13",
+      image: "/imgs/02.webp",
       slug: "kimetsu-no-yaiba",
-      view: "123",
+      ep: "/phim/kimetsu-no-yaiba/tap-1202",
+      view: "12",
+      tags: ["Action", "Supernatural", "Drama", "Shounen"],
     },
     {
       title: "Boku no Hero Academia",
@@ -26,9 +32,12 @@ export const useCategories = () => {
       description:
         "Trong một thế giới mà hầu hết mọi người đều có siêu năng lực gọi là 'Quirk', Izuku Midoriya – một cậu bé không có năng lực – vẫn nuôi ước mơ trở thành anh hùng. Cuộc đời cậu thay đổi khi gặp anh hùng số 1 All Might.",
       number: "03",
-      img: "/imgs/03.webp",
+      ccNumber: "13",
+      image: "/imgs/03.webp",
       slug: "boku-no-hero-a",
-      view: "1123",
+      ep: "/phim/boku-no-hero-a/tap-1203",
+      view: "113",
+      tags: ["Action", "School", "Super Power", "Shounen"],
     },
     {
       title: "Fairy Tail: 100 Years Quest",
@@ -36,9 +45,12 @@ export const useCategories = () => {
       description:
         "Tiếp nối câu chuyện Fairy Tail, nhóm Natsu và Lucy bắt đầu nhiệm vụ 100 năm – thử thách khó khăn nhất mà chưa ai hoàn thành, đối mặt với những kẻ thù và bí ẩn mới.",
       number: "04",
-      img: "/imgs/04.webp",
+      ccNumber: "13",
+      image: "/imgs/04.webp",
       slug: "fairy-tail-100y",
-      view: "133",
+      ep: "/phim/fairy-tail-100y/tap-1204",
+      view: "13",
+      tags: ["Action", "Adventure", "Magic", "Fantasy"],
     },
     {
       title: "Shinmai Ossan Boukensha",
@@ -46,9 +58,12 @@ export const useCategories = () => {
       description:
         "Rick Gladiator, một người đàn ông trung niên quyết định trở thành mạo hiểm giả ở tuổi 30. Dù là lính mới, ông lại sở hữu sức mạnh áp đảo khiến mọi người kinh ngạc.",
       number: "05",
-      img: "/imgs/05.webp",
+      ccNumber: "12",
+      image: "/imgs/05.webp",
       slug: "shinmai-ossan",
-      view: "12312",
+      ep: "/phim/shinmai-ossan/tap-1205",
+      view: "1212",
+      tags: ["Adventure", "Fantasy"],
     },
     {
       title: "Shikanoko Nokonoko Koshitantan",
@@ -56,9 +71,12 @@ export const useCategories = () => {
       description:
         "Câu chuyện hài hước xoay quanh cô bé có sừng hươu Shikanoko và những tình huống kỳ lạ trong cuộc sống thường ngày.",
       number: "06",
-      img: "/imgs/06.webp",
+      ccNumber: "12",
+      image: "/imgs/06.webp",
       slug: "shikanoko-nok",
-      view: "12123",
+      ep: "/phim/shikanoko-nok/tap-1206",
+      view: "1223",
+      tags: ["Comedy", "Slice of Life"],
     },
     {
       title: "Make Heroine ga Oosugiru!",
@@ -66,9 +84,12 @@ export const useCategories = () => {
       description:
         "Một cậu nam sinh bình thường bất ngờ bị cuốn vào câu chuyện với quá nhiều nữ chính bao quanh, dẫn đến hàng loạt tình huống dở khóc dở cười.",
       number: "07",
-      img: "/imgs/07.webp",
+      ccNumber: "12",
+      image: "/imgs/07.webp",
       slug: "make-heroine-g",
-      view: "12312",
+      ep: "/phim/make-heroine-g/tap-1207",
+      view: "1212",
+      tags: ["Comedy", "Romance", "School"],
     },
     {
       title: "Kaiju No. 8",
@@ -76,9 +97,12 @@ export const useCategories = () => {
       description:
         "Kafka Hibino, một nhân viên vệ sinh dọn xác quái thú, vô tình bị nhiễm và trở thành một Kaiju. Tuy nhiên, anh vẫn quyết tâm gia nhập Đội Phòng Vệ để bảo vệ nhân loại.",
       number: "08",
-      img: "/imgs/08.webp",
+      ccNumber: "15",
+      image: "/imgs/08.webp",
       slug: "kaiju-8-gou",
-      view: "12123",
+      ep: "/phim/kaiju-8-gou/tap-1208",
+      view: "1223",
+      tags: ["Action", "Sci-Fi", "Military"],
     },
     {
       title: "Make Heroine ga Oosugiru! (Khác)",
@@ -86,9 +110,12 @@ export const useCategories = () => {
       description:
         "Một phiên bản khác của Make Heroine với nhiều tình tiết mới lạ và kịch tính hơn.",
       number: "09",
-      img: "/imgs/06.webp",
+      ccNumber: "12",
+      image: "/imgs/06.webp",
       slug: "make-heroine-g-alt",
-      view: "12312",
+      ep: "/phim/make-heroine-g-alt/tap-1209",
+      view: "1212",
+      tags: ["Comedy", "Romance"],
     },
     {
       title: "Kaiju No. 8 (Khác)",
@@ -96,9 +123,114 @@ export const useCategories = () => {
       description:
         "Một câu chuyện phụ xoay quanh những trận chiến khác của Kafka Hibino trong thế giới Kaiju.",
       number: "10",
-      img: "/imgs/05.webp",
+      ccNumber: "12",
+      image: "/imgs/05.webp",
       slug: "kaiju-8-gou-alt",
-      view: "12123",
+      ep: "/phim/kaiju-8-gou-alt/tap-1210",
+      view: "1223",
+      tags: ["Action", "Sci-Fi"],
+    },
+  ];
+};
+
+export const useMovieList = () => {
+  return [
+    {
+      title: "One Piece",
+      name: "Vua Hải Tặc",
+      rank: "#1 Rank",
+      ccNumber: "13",
+      view: "24",
+      image: "/imgs/rank1.webp",
+      description:
+        "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.",
+      ep: "/phim/one-piece/tap-1201",
+      slug: "one-piece",
+      tags: ["Action", "Adventure", "Fantasy", "Shounen"],
+    },
+    {
+      title: "Dandadan",
+      rank: "#2 Rank",
+      ccNumber: "13",
+      view: "23",
+      image: "/imgs/rank2.webp",
+      description:
+        "Dandadan là bộ anime với những trận chiến siêu nhiên và hài hước giữa các nhân vật học sinh.",
+      ep: "/phim/dandadan/tap-1202",
+      slug: "dandadan",
+      tags: ["Action", "Comedy", "Supernatural", "Romance"],
+    },
+    {
+      title: "Attack on Titan",
+      rank: "#3 Rank",
+      ccNumber: "12",
+      view: "22",
+      image: "/imgs/rank3.webp",
+      description:
+        "Attack on Titan kể về cuộc chiến sinh tồn của con người chống lại những người khổng lồ Titan tấn công thế giới.",
+      ep: "/phim/attack-on-titan/tap-1203",
+      slug: "attack-on-titan",
+      tags: ["Action", "Drama", "Fantasy", "Military"],
+    },
+    {
+      title: "Demon Slayer",
+      rank: "#4 Rank",
+      ccNumber: "12",
+      view: "24",
+      image: "/imgs/rank4.webp",
+      description:
+        "Demon Slayer theo chân Tanjiro Kamado trong hành trình diệt quỷ cứu em gái và bảo vệ thế giới loài người.",
+      ep: "/phim/demon-slayer/tap-1204",
+      slug: "demon-slayer",
+      tags: ["Action", "Supernatural", "Drama", "Shounen"],
+    },
+    {
+      title: "My Hero Academia",
+      rank: "#5 Rank",
+      ccNumber: "12",
+      view: "24",
+      image: "/imgs/rank5.webp",
+      description:
+        "My Hero Academia là câu chuyện về Izuku Midoriya và các học sinh trường Anh Hùng trong việc luyện tập và chiến đấu.",
+      ep: "/phim/my-hero-academia/tap-1205",
+      slug: "my-hero-academia",
+      tags: ["Action", "School", "Super Power", "Shounen"],
+    },
+    {
+      title: "Jujutsu Kaisen",
+      rank: "#6 Rank",
+      ccNumber: "15",
+      view: "24",
+      image: "/imgs/rank6.webp",
+      description:
+        "Jujutsu Kaisen kể về Yuji Itadori chiến đấu chống lại lời nguyền và bảo vệ thế giới khỏi quỷ dữ.",
+      ep: "/phim/jujutsu-kaisen/tap-1206",
+      slug: "jujutsu-kaisen",
+      tags: ["Action", "Supernatural", "Dark Fantasy"],
+    },
+    {
+      title: "Fullmetal Alchemist",
+      rank: "#7 Rank",
+      ccNumber: "12",
+      view: "24",
+      image: "/imgs/rank7.webp",
+      description:
+        "Fullmetal Alchemist kể về anh em Edward và Alphonse Elric trong hành trình tìm kiếm Hòn đá Triết gia để phục hồi cơ thể.",
+      ep: "/phim/fullmetal-alchemist/tap-1207",
+      slug: "fullmetal-alchemist",
+      tags: ["Action", "Adventure", "Drama", "Fantasy"],
+    },
+    {
+      title: "Death Note",
+      rank: "#8 Rank",
+      ccNumber: "12",
+      view: "24",
+      image: "/imgs/rank8.webp",
+      description:
+        "Death Note kể về Light Yagami phát hiện quyển sổ tử thần và cuộc chiến trí tuệ chống lại thám tử L.",
+      ep: "/phim/death-note/tap-1208",
+      slug: "death-note",
+      tags: ["Psychological", "Thriller", "Supernatural"],
     },
   ];
 };

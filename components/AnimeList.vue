@@ -13,10 +13,12 @@
         />
 
         <!-- overlay hover -->
-        <AnimeOverlay :item="item" />
+        <div v-for="(anime, i) in animeNewAdded" :key="i">
+          <AnimeOverlay :item="anime" />
+        </div>
       </div>
       <div>
-        <NuxtLink :to="item.slug">
+        <NuxtLink :to="`/phim/${item.slug}`">
           <h3
             class="text-white font-bold text-md line-clamp-1 hover:text-pink-300 cursor-pointer"
           >
@@ -31,7 +33,7 @@
           <span
             class="px-1 py-0.5 rounded text-sm text-black font-semibold bg-[#b0e3af]"
           >
-            {{ item.episode }}
+            {{ item.ccNumber }}
           </span>
           <span class="inline-block w-1 h-1 bg-gray-600 rounded-full"></span>
           <span class="text-gray-400 text-sm font-semibold">{{
@@ -51,15 +53,20 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
+import { animeNewAdded } from "~/composables/animeData";
 
-interface AnimeItem {
+export interface AnimeItem {
   title: string;
   name: string;
-  episode: number;
-  type: "TV" | "MOVIE";
+  number: string;
+  ccNumber: number;
+  type: string;
   image: string;
   slug: string;
-  view: string;
+  ep?: string;
+  view?: string;
+  tags?: string[];
+  description?: string;
 }
 
 const props = defineProps<{

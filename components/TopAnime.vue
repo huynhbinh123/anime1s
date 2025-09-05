@@ -70,13 +70,13 @@ const activeTab = ref("Today");
           <!-- Info -->
           <div class="flex flex-col">
             <NuxtLink
-              :to="item.slug"
+              :to="`/phim/${item.slug}`"
               class="font-bold text-white leading-tight hover:text-pink-300"
             >
               {{ item.title }}
             </NuxtLink>
             <NuxtLink
-              :to="item.slug"
+              :to="`/phim/${item.slug}`"
               class="text-sm text-gray-400 font-semibold truncate line-clamp-1 max-w-[260px]"
             >
               {{ item.description }}

@@ -28,7 +28,7 @@ const epNumber = anime.ep ? anime.ep.split("/tap-")[1] || "" : "";
     <!-- movie -->
     <div class="max-w-8xl px-6 py-12 flex gap-10">
       <!-- Cột trái -->
-      <div class="flex-1 flex gap-6 ml-40">
+      <div class="flex-1 flex flex-col gap-2 ml-40">
         <div class="flex flex-col">
           <!-- Breadcrumb -->
           <div class="text-base font-bold flex items-center gap-2 text-white">
@@ -51,6 +51,10 @@ const epNumber = anime.ep ? anime.ep.split("/tap-")[1] || "" : "";
               anime.title
             }}</NuxtLink>
           </div>
+        </div>
+
+        <!-- Thông tin chính + Poster -->
+        <div class="flex justify-start gap-12">
           <!-- Poster -->
           <div class="w-[180px] h-[225px] mt-2 flex-shrink-0">
             <img
@@ -59,51 +63,55 @@ const epNumber = anime.ep ? anime.ep.split("/tap-")[1] || "" : "";
               class="rounded-lg shadow-lg h-full w-full object-cover"
             />
           </div>
-        </div>
+          <div class="flex flex-col gap-2">
+            <!-- Title -->
+            <NuxtLink :to="anime.slug" class="text-4xl font-bold">{{
+              anime.title
+            }}</NuxtLink>
+            <p class="text-lg text-gray-300">{{ anime.name }}</p>
 
-        <!-- Thông tin chính -->
-        <div class="flex flex-col justify-start gap-4 mt-10">
-          <!-- Title -->
-          <NuxtLink :to="anime.slug" class="text-4xl font-bold">{{
-            anime.title
-          }}</NuxtLink>
-          <p class="text-lg text-gray-300">{{ anime.name }}</p>
+            <!-- Badge -->
+            <div class="flex items-center gap-2">
+              <span
+                class="bg-[#b0e3af] text-black flex items-center px-1 py-1 rounded text-sm font-bold"
+              >
+                <UIcon
+                  name="tabler:badge-cc-filled"
+                  size="20"
+                  class="bg-black"
+                />
+                <span>{{ anime.ccNumber }}</span>
+              </span>
+              <span
+                class="bg-[#ffbade] text-black px-1 py-1 rounded text-sm font-bold"
+              >
+                HD
+              </span>
+            </div>
 
-          <!-- Badge -->
-          <div class="flex items-center gap-2">
-            <span
-              class="bg-[#b0e3af] text-black flex items-center px-1 py-1 rounded text-sm font-bold"
+            <!-- Buttons -->
+            <div class="flex items-center gap-4 mt-4">
+              <NuxtLink
+                :to="anime.ep"
+                class="bg-[#ffbade] text-black font-semibold px-6 py-2 rounded-full shadow-md flex items-center gap-2 hover:bg-pink-300 transition"
+              >
+                <UIcon name="mdi:play" size="26" /> Xem ngay
+              </NuxtLink>
+              <NuxtLink
+                :to="anime.ep"
+                class="bg-white text-black font-semibold px-6 py-2 rounded-full shadow-md flex items-center gap-2 hover:bg-gray-300"
+              >
+                <UIcon name="mdi:plus" size="26" /> Sưu Tập
+              </NuxtLink>
+            </div>
+
+            <!-- Description -->
+            <p
+              class="text-gray-300 leading-relaxed max-w-2xl line-clamp-3 mt-2"
             >
-              <UIcon name="tabler:badge-cc-filled" size="20" class="bg-black" />
-              <span>{{ anime.ccNumber }}</span>
-            </span>
-            <span
-              class="bg-[#ffbade] text-black px-1 py-1 rounded text-sm font-bold"
-            >
-              HD
-            </span>
+              {{ anime.description }}
+            </p>
           </div>
-
-          <!-- Buttons -->
-          <div class="flex items-center gap-4">
-            <NuxtLink
-              :to="anime.ep"
-              class="bg-[#ffbade] text-black font-semibold px-6 py-2 rounded-full shadow-md flex items-center gap-2 hover:bg-pink-300 transition"
-            >
-              <UIcon name="mdi:play" size="26" /> Xem ngay
-            </NuxtLink>
-            <NuxtLink
-              :to="anime.ep"
-              class="bg-white text-black font-semibold px-6 py-2 rounded-full shadow-md flex items-center gap-2 hover:bg-gray-300"
-            >
-              <UIcon name="mdi:plus" size="26" /> Sưu Tập
-            </NuxtLink>
-          </div>
-
-          <!-- Description -->
-          <p class="text-gray-300 leading-relaxed max-w-2xl line-clamp-3">
-            {{ anime.description }}
-          </p>
         </div>
       </div>
 
@@ -128,7 +136,7 @@ const epNumber = anime.ep ? anime.ep.split("/tap-")[1] || "" : "";
               v-for="tag in anime.tags"
               :key="tag"
               :to="`/the-loai/${tag.toLowerCase()}`"
-              class="px-3 py-1 border border-gray-500 rounded-lg text-sm text-gray-300 hover:text-pink-300 hover:border-pink-300 transition"
+              class="px-3 py-1 border border-gray-500 border-dashed rounded-lg text-sm text-gray-300 hover:text-pink-300 hover:border-pink-300 transition"
             >
               {{ tag }}
             </NuxtLink>

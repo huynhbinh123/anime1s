@@ -2,6 +2,7 @@ export const useCategories = () => {
   return [
     {
       title: "One Piece",
+      type: "HD",
       name: "Vua Hải Tặc",
       number: "01",
       description:
@@ -15,6 +16,7 @@ export const useCategories = () => {
     },
     {
       title: "Kimetsu no Yaiba",
+      type: "HD",
       name: "Thanh Gươm Diệt Quỷ",
       description:
         "Câu chuyện xoay quanh Kamado Tanjiro – một cậu bé tốt bụng có gia đình bị quỷ sát hại. Tanjiro cùng em gái Nezuko (bị biến thành quỷ) tham gia đội Diệt Quỷ để tìm cách chữa trị cho em và tiêu diệt quỷ dữ.",
@@ -28,6 +30,7 @@ export const useCategories = () => {
     },
     {
       title: "Boku no Hero Academia",
+      type: "HD",
       name: "Học Viện Anh Hùng",
       description:
         "Trong một thế giới mà hầu hết mọi người đều có siêu năng lực gọi là 'Quirk', Izuku Midoriya – một cậu bé không có năng lực – vẫn nuôi ước mơ trở thành anh hùng. Cuộc đời cậu thay đổi khi gặp anh hùng số 1 All Might.",
@@ -41,6 +44,7 @@ export const useCategories = () => {
     },
     {
       title: "Fairy Tail: 100 Years Quest",
+      type: "HD",
       name: "Hội Pháp Sư",
       description:
         "Tiếp nối câu chuyện Fairy Tail, nhóm Natsu và Lucy bắt đầu nhiệm vụ 100 năm – thử thách khó khăn nhất mà chưa ai hoàn thành, đối mặt với những kẻ thù và bí ẩn mới.",
@@ -54,6 +58,7 @@ export const useCategories = () => {
     },
     {
       title: "Shinmai Ossan Boukensha",
+      type: "HD",
       name: "Tân Binh Trung Niên",
       description:
         "Rick Gladiator, một người đàn ông trung niên quyết định trở thành mạo hiểm giả ở tuổi 30. Dù là lính mới, ông lại sở hữu sức mạnh áp đảo khiến mọi người kinh ngạc.",
@@ -67,6 +72,7 @@ export const useCategories = () => {
     },
     {
       title: "Shikanoko Nokonoko Koshitantan",
+      type: "HD",
       name: "Công Chúa Hươu",
       description:
         "Câu chuyện hài hước xoay quanh cô bé có sừng hươu Shikanoko và những tình huống kỳ lạ trong cuộc sống thường ngày.",
@@ -80,6 +86,7 @@ export const useCategories = () => {
     },
     {
       title: "Make Heroine ga Oosugiru!",
+      type: "HD",
       name: "Quá Nhiều Nữ Chính",
       description:
         "Một cậu nam sinh bình thường bất ngờ bị cuốn vào câu chuyện với quá nhiều nữ chính bao quanh, dẫn đến hàng loạt tình huống dở khóc dở cười.",
@@ -93,6 +100,7 @@ export const useCategories = () => {
     },
     {
       title: "Kaiju No. 8",
+      type: "HD",
       name: "Quái Thú Số 8",
       description:
         "Kafka Hibino, một nhân viên vệ sinh dọn xác quái thú, vô tình bị nhiễm và trở thành một Kaiju. Tuy nhiên, anh vẫn quyết tâm gia nhập Đội Phòng Vệ để bảo vệ nhân loại.",
@@ -106,6 +114,7 @@ export const useCategories = () => {
     },
     {
       title: "Make Heroine ga Oosugiru! (Khác)",
+      type: "HD",
       name: "Quá Nhiều Nữ Chính",
       description:
         "Một phiên bản khác của Make Heroine với nhiều tình tiết mới lạ và kịch tính hơn.",
@@ -119,6 +128,7 @@ export const useCategories = () => {
     },
     {
       title: "Kaiju No. 8 (Khác)",
+      type: "HD",
       name: "Quái Thú Số 8",
       description:
         "Một câu chuyện phụ xoay quanh những trận chiến khác của Kafka Hibino trong thế giới Kaiju.",
@@ -137,6 +147,7 @@ export const useMovieList = () => {
   return [
     {
       title: "One Piece",
+      type: "HD",
       name: "Vua Hải Tặc",
       rank: "#1 Rank",
       ccNumber: "13",
@@ -150,6 +161,7 @@ export const useMovieList = () => {
     },
     {
       title: "Dandadan",
+      type: "HD",
       rank: "#2 Rank",
       ccNumber: "13",
       view: "23",
@@ -162,6 +174,7 @@ export const useMovieList = () => {
     },
     {
       title: "Attack on Titan",
+      type: "HD",
       rank: "#3 Rank",
       ccNumber: "12",
       view: "22",
@@ -174,6 +187,7 @@ export const useMovieList = () => {
     },
     {
       title: "Demon Slayer",
+      type: "HD",
       rank: "#4 Rank",
       ccNumber: "12",
       view: "24",
@@ -186,6 +200,7 @@ export const useMovieList = () => {
     },
     {
       title: "My Hero Academia",
+      type: "HD",
       rank: "#5 Rank",
       ccNumber: "12",
       view: "24",
@@ -198,6 +213,7 @@ export const useMovieList = () => {
     },
     {
       title: "Jujutsu Kaisen",
+      type: "HD",
       rank: "#6 Rank",
       ccNumber: "15",
       view: "24",
@@ -210,6 +226,7 @@ export const useMovieList = () => {
     },
     {
       title: "Fullmetal Alchemist",
+      type: "HD",
       rank: "#7 Rank",
       ccNumber: "12",
       view: "24",
@@ -222,6 +239,7 @@ export const useMovieList = () => {
     },
     {
       title: "Death Note",
+      type: "HD",
       rank: "#8 Rank",
       ccNumber: "12",
       view: "24",

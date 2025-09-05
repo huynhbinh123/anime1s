@@ -21,7 +21,7 @@
           <img
             :src="item.image"
             :alt="item.title"
-            class="w-[200px] h-[280px] object-cover rounded-md cursor-pointer transition duration-300 group-hover:opacity-30"
+            class="w-full h-[280px] object-cover rounded-md cursor-pointer transition duration-300 group-hover:opacity-30"
           />
 
           <!-- overlay hover -->
@@ -37,7 +37,7 @@
               class="px-2 rounded bg-[#b0e3af] text-sm font-bold text-black flex items-center justify-center gap-1 absolute top-1 -right-1"
             >
               <UIcon name="tabler:badge-cc-filled" size="15" class="bg-black" />
-              {{ item.episode }}
+              {{ item.ccNumber }}
             </span>
             <span
               class="px-2 text-black font-bold text-sm rounded bg-[#ffbade] absolute top-1 left-1"
@@ -73,15 +73,18 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-
-interface AnimeItem {
+export interface AnimeItem {
   title: string;
   name: string;
-  episode: number;
-  type: "TV" | "MOVIE";
+  number: string;
+  ccNumber: number;
+  type: string;
   image: string;
   slug: string;
-  view: string;
+  ep?: string;
+  view?: string;
+  tags?: string[];
+  description?: string;
 }
 
 const props = defineProps<{

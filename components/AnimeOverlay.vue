@@ -10,7 +10,7 @@
         class="px-2 rounded bg-[#b0e3af] text-sm font-bold text-black flex items-center justify-center gap-1"
       >
         <UIcon name="tabler:badge-cc-filled" size="15" class="bg-black" />
-        {{ item.episode }}
+        {{ item.ccNumber }}
       </span>
       <span class="px-2 text-black font-bold text-sm rounded bg-[#7ecaec]">
         HD
@@ -25,9 +25,9 @@
       {{ item.title }}
     </p>
     <div class="min-w-full flex justify-start gap-2 items-center">
-      <NuxtLink :to="`/${item.slug}`">
+      <NuxtLink :to="`/phim/${item.slug}`">
         <UButton
-          :to="`/${item.slug}`"
+          :to="`/phim/${item.slug}`"
           class="text-black/90 bg-[#ffbade] rounded cursor-pointer p-1.5 w-[200px] flex items-center justify-center gap-1"
         >
           <UIcon name="material-symbols:play-arrow-rounded" size="30" />
@@ -48,14 +48,18 @@
 </template>
 
 <script setup lang="ts">
-interface AnimeItem {
+export interface AnimeItem {
   title: string;
   name: string;
-  episode: number;
-  type: "TV" | "MOVIE";
+  number: string;
+  ccNumber: number;
+  type: string;
   image: string;
   slug: string;
-  view: string;
+  ep?: string;
+  view?: string;
+  tags?: string[];
+  description?: string;
 }
 
 defineProps<{

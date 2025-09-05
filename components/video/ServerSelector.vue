@@ -1,9 +1,10 @@
 <template>
+  <!-- Thông báo tập -->
   <div class="flex bg-[#201F31] text-white rounded-md w-full">
     <!-- Thông báo -->
     <div class="bg-pink-300 text-black p-2 rounded-l-md max-w-[270px]">
       <p class="text-base font-semibold">Bạn đang xem</p>
-      <p class="text-lg font-bold">Tập 1141</p>
+      <p class="text-lg font-bold">Tập {{ epNumber }}</p>
       <p class="text-sm">Nếu bạn không xem được vui lòng chọn server khác!</p>
     </div>
 
@@ -40,12 +41,16 @@
         class="flex items-center gap-1 p-2 pl-4 bg-blue-900/30 text-blue-400 w-full"
       >
         <UIcon name="ic:twotone-info" size="20" class="text-blue-400"></UIcon>
-        Báo lỗi phim<NuxtLink
-          to="#"
-          class="hover:underline text-pink-300 font-bold"
-          >tại đây</NuxtLink
-        >
+        Báo lỗi phim
+        <NuxtLink to="#" class="hover:underline text-pink-300 font-bold">
+          tại đây
+        </NuxtLink>
       </div>
     </div>
   </div>
 </template>
+<script setup lang="ts">
+const props = defineProps<{
+  epNumber: number;
+}>();
+</script>

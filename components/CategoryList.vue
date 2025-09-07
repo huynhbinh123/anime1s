@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import TopAnime from "~/components/TopAnime.vue";
-import { useCategories } from "~/composables/useCategories";
-
-const animes = useCategories();
 
 const categories = [
   { name: "Action", color: "text-green-300/70", slug: "action" },

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full overflow-hidden relative">
+  <div class="w-full lg:h-full h-[570px] overflow-hidden relative">
     <transition-group name="slide-up" tag="div" class="absolute w-full">
       <div
         v-for="item in visibleComments"

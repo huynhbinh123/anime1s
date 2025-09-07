@@ -11,7 +11,7 @@
         <UIcon name="material-symbols:chevron-right" size="18" class="mt-0.5" />
       </NuxtLink>
     </div>
-    <ul class="grid grid-cols-6 gap-4">
+    <ul class="grid lg:grid-cols-6 grid-cols-2 gap-4">
       <li
         v-for="item in items"
         :key="item.slug"

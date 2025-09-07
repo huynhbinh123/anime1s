@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
-import { useCategories, useMovieList } from "~/composables/useCategories";
+import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 const route = useRoute();
@@ -8,8 +7,595 @@ const router = useRouter();
 const slug = route.params.slug as string;
 const ep = route.params.ep as string;
 
-const categories = useCategories();
-const movieList = useMovieList();
+const categories = [
+  {
+    title: "One Piece",
+    type: "HD",
+    name: "Vua Hải Tặc",
+    number: "01",
+    description:
+      "One Piece là bộ anime huyền thoại kể về hành trình của Monkey D. Luffy – một cậu bé có ước mơ trở thành Vua Hải Tặc. Luffy cùng đồng đội của mình phiêu lưu trên đại dương để tìm kiếm kho báu One Piece mà Vua Hải Tặc Gol D. Roger để lại.",
+    ccNumber: "13",
+    image: "/imgs/01.webp",
+    slug: "one-piece",
+    ep: "/phim/one-piece/tap-1201",
+    view: "12",
+    tags: ["Action", "Adventure", "Fantasy", "Shounen"],
+  },
+  {
+    title: "Kimetsu no Yaiba",
+    type: "HD",
+    name: "Thanh Gươm Diệt Quỷ",
+    description:
+      "Câu chuyện xoay quanh Kamado Tanjiro – một cậu bé tốt bụng có gia đình bị quỷ sát hại. Tanjiro cùng em gái Nezuko (bị biến thành quỷ) tham gia đội Diệt Quỷ để tìm cách chữa trị cho em và tiêu diệt quỷ dữ.",
+    number: "02",
+    ccNumber: "13",
+    image: "/imgs/02.webp",
+    slug: "kimetsu-no-yaiba",
+    ep: "/phim/kimetsu-no-yaiba/tap-1202",
+    view: "12",
+    tags: ["Action", "Supernatural", "Drama", "Shounen"],
+  },
+  {
+    title: "Boku no Hero Academia",
+    type: "HD",
+    name: "Học Viện Anh Hùng",
+    description:
+      "Trong một thế giới mà hầu hết mọi người đều có siêu năng lực gọi là 'Quirk', Izuku Midoriya – một cậu bé không có năng lực – vẫn nuôi ước mơ trở thành anh hùng. Cuộc đời cậu thay đổi khi gặp anh hùng số 1 All Might.",
+    number: "03",
+    ccNumber: "13",
+    image: "/imgs/03.webp",
+    slug: "boku-no-hero-a",
+    ep: "/phim/boku-no-hero-a/tap-1203",
+    view: "113",
+    tags: ["Action", "School", "Super Power", "Shounen"],
+  },
+  {
+    title: "Fairy Tail: 100 Years Quest",
+    type: "HD",
+    name: "Hội Pháp Sư",
+    description:
+      "Tiếp nối câu chuyện Fairy Tail, nhóm Natsu và Lucy bắt đầu nhiệm vụ 100 năm – thử thách khó khăn nhất mà chưa ai hoàn thành, đối mặt với những kẻ thù và bí ẩn mới.",
+    number: "04",
+    ccNumber: "13",
+    image: "/imgs/04.webp",
+    slug: "fairy-tail-100y",
+    ep: "/phim/fairy-tail-100y/tap-1204",
+    view: "13",
+    tags: ["Action", "Adventure", "Magic", "Fantasy"],
+  },
+  {
+    title: "Shinmai Ossan Boukensha",
+    type: "HD",
+    name: "Tân Binh Trung Niên",
+    description:
+      "Rick Gladiator, một người đàn ông trung niên quyết định trở thành mạo hiểm giả ở tuổi 30. Dù là lính mới, ông lại sở hữu sức mạnh áp đảo khiến mọi người kinh ngạc.",
+    number: "05",
+    ccNumber: "12",
+    image: "/imgs/05.webp",
+    slug: "shinmai-ossan",
+    ep: "/phim/shinmai-ossan/tap-1205",
+    view: "1212",
+    tags: ["Adventure", "Fantasy"],
+  },
+  {
+    title: "Shikanoko Nokonoko Koshitantan",
+    type: "HD",
+    name: "Công Chúa Hươu",
+    description:
+      "Câu chuyện hài hước xoay quanh cô bé có sừng hươu Shikanoko và những tình huống kỳ lạ trong cuộc sống thường ngày.",
+    number: "06",
+    ccNumber: "12",
+    image: "/imgs/06.webp",
+    slug: "shikanoko-nok",
+    ep: "/phim/shikanoko-nok/tap-1206",
+    view: "1223",
+    tags: ["Comedy", "Slice of Life"],
+  },
+  {
+    title: "Make Heroine ga Oosugiru!",
+    type: "HD",
+    name: "Quá Nhiều Nữ Chính",
+    description:
+      "Một cậu nam sinh bình thường bất ngờ bị cuốn vào câu chuyện với quá nhiều nữ chính bao quanh, dẫn đến hàng loạt tình huống dở khóc dở cười.",
+    number: "07",
+    ccNumber: "12",
+    image: "/imgs/07.webp",
+    slug: "make-heroine-g",
+    ep: "/phim/make-heroine-g/tap-1207",
+    view: "1212",
+    tags: ["Comedy", "Romance", "School"],
+  },
+  {
+    title: "Kaiju No. 8",
+    type: "HD",
+    name: "Quái Thú Số 8",
+    description:
+      "Kafka Hibino, một nhân viên vệ sinh dọn xác quái thú, vô tình bị nhiễm và trở thành một Kaiju. Tuy nhiên, anh vẫn quyết tâm gia nhập Đội Phòng Vệ để bảo vệ nhân loại.",
+    number: "08",
+    ccNumber: "15",
+    image: "/imgs/08.webp",
+    slug: "kaiju-8-gou",
+    ep: "/phim/kaiju-8-gou/tap-1208",
+    view: "1223",
+    tags: ["Action", "Sci-Fi", "Military"],
+  },
+  {
+    title: "Make Heroine ga Oosugiru! (Khác)",
+    type: "HD",
+    name: "Quá Nhiều Nữ Chính",
+    description:
+      "Một phiên bản khác của Make Heroine với nhiều tình tiết mới lạ và kịch tính hơn.",
+    number: "09",
+    ccNumber: "12",
+    image: "/imgs/06.webp",
+    slug: "make-heroine-g-alt",
+    ep: "/phim/make-heroine-g-alt/tap-1209",
+    view: "1212",
+    tags: ["Comedy", "Romance"],
+  },
+  {
+    title: "Kaiju No. 8 (Khác)",
+    type: "HD",
+    name: "Quái Thú Số 8",
+    description:
+      "Một câu chuyện phụ xoay quanh những trận chiến khác của Kafka Hibino trong thế giới Kaiju.",
+    number: "10",
+    ccNumber: "12",
+    image: "/imgs/05.webp",
+    slug: "kaiju-8-gou-alt",
+    ep: "/phim/kaiju-8-gou-alt/tap-1210",
+    view: "1223",
+    tags: ["Action", "Sci-Fi"],
+  },
+];
+
+const movieList = [
+  {
+    title: "One Piece",
+    type: "HD",
+    name: "Vua Hải Tặc",
+    rank: "#1 Rank",
+    ccNumber: "13",
+    view: "24",
+    image: "/imgs/rank1.webp",
+    description:
+      "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.",
+    ep: "/phim/one-piece/tap-1201",
+    slug: "one-piece",
+    tags: ["Action", "Adventure", "Fantasy", "Shounen"],
+  },
+  {
+    title: "Dandadan",
+    type: "HD",
+    rank: "#2 Rank",
+    ccNumber: "13",
+    view: "23",
+    image: "/imgs/rank2.webp",
+    description:
+      "Dandadan là bộ anime với những trận chiến siêu nhiên và hài hước giữa các nhân vật học sinh.",
+    ep: "/phim/dandadan/tap-1202",
+    slug: "dandadan",
+    tags: ["Action", "Comedy", "Supernatural", "Romance"],
+  },
+  {
+    title: "Attack on Titan",
+    type: "HD",
+    rank: "#3 Rank",
+    ccNumber: "12",
+    view: "22",
+    image: "/imgs/rank3.webp",
+    description:
+      "Attack on Titan kể về cuộc chiến sinh tồn của con người chống lại những người khổng lồ Titan tấn công thế giới.",
+    ep: "/phim/attack-on-titan/tap-1203",
+    slug: "attack-on-titan",
+    tags: ["Action", "Drama", "Fantasy", "Military"],
+  },
+  {
+    title: "Demon Slayer",
+    type: "HD",
+    rank: "#4 Rank",
+    ccNumber: "12",
+    view: "24",
+    image: "/imgs/rank4.webp",
+    description:
+      "Demon Slayer theo chân Tanjiro Kamado trong hành trình diệt quỷ cứu em gái và bảo vệ thế giới loài người.",
+    ep: "/phim/demon-slayer/tap-1204",
+    slug: "demon-slayer",
+    tags: ["Action", "Supernatural", "Drama", "Shounen"],
+  },
+  {
+    title: "My Hero Academia",
+    type: "HD",
+    rank: "#5 Rank",
+    ccNumber: "12",
+    view: "24",
+    image: "/imgs/rank5.webp",
+    description:
+      "My Hero Academia là câu chuyện về Izuku Midoriya và các học sinh trường Anh Hùng trong việc luyện tập và chiến đấu.",
+    ep: "/phim/my-hero-academia/tap-1205",
+    slug: "my-hero-academia",
+    tags: ["Action", "School", "Super Power", "Shounen"],
+  },
+  {
+    title: "Jujutsu Kaisen",
+    type: "HD",
+    rank: "#6 Rank",
+    ccNumber: "15",
+    view: "24",
+    image: "/imgs/rank6.webp",
+    description:
+      "Jujutsu Kaisen kể về Yuji Itadori chiến đấu chống lại lời nguyền và bảo vệ thế giới khỏi quỷ dữ.",
+    ep: "/phim/jujutsu-kaisen/tap-1206",
+    slug: "jujutsu-kaisen",
+    tags: ["Action", "Supernatural", "Dark Fantasy"],
+  },
+  {
+    title: "Fullmetal Alchemist",
+    type: "HD",
+    rank: "#7 Rank",
+    ccNumber: "12",
+    view: "24",
+    image: "/imgs/rank7.webp",
+    description:
+      "Fullmetal Alchemist kể về anh em Edward và Alphonse Elric trong hành trình tìm kiếm Hòn đá Triết gia để phục hồi cơ thể.",
+    ep: "/phim/fullmetal-alchemist/tap-1207",
+    slug: "fullmetal-alchemist",
+    tags: ["Action", "Adventure", "Drama", "Fantasy"],
+  },
+  {
+    title: "Death Note",
+    type: "HD",
+    rank: "#8 Rank",
+    ccNumber: "12",
+    view: "24",
+    image: "/imgs/rank8.webp",
+    description:
+      "Death Note kể về Light Yagami phát hiện quyển sổ tử thần và cuộc chiến trí tuệ chống lại thám tử L.",
+    ep: "/phim/death-note/tap-1208",
+    slug: "death-note",
+    tags: ["Psychological", "Thriller", "Supernatural"],
+  },
+];
+
+const animeNewAdded = [
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "11",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1211",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Những cuộc phiêu lưu mới của máy bán hàng tự động ở thế giới kỳ lạ.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "01",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1201",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Một người đàn ông bị tái sinh thành máy bán hàng tự động ở thế giới khác và bắt đầu cuộc phiêu lưu kỳ lạ cùng những người bạn mới.",
+  },
+  {
+    title: "Kanojo, Okarishimasu 4th Season",
+    name: "Rent-a-Girlfriend Season 4",
+    number: "02",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "kanojo-okarishimasu-4",
+    ep: "/phim/kanojo-okarishimasu-4/tap-1202",
+    view: "0",
+    tags: ["romance", "comedy", "drama"],
+    description:
+      "Tiếp tục câu chuyện tình cảm hài hước giữa Kazuya và các cô bạn gái thuê trong mùa thứ 4.",
+  },
+  {
+    title: "Meitantei Conan",
+    name: "Thám Tử Lừng Danh Conan",
+    number: "03",
+    ccNumber: 1140,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "meitantei-conan",
+    ep: "/phim/meitantei-conan/tap-1140",
+    view: "0",
+    tags: ["detective", "mystery", "shounen"],
+    description:
+      "Cậu thám tử nhí Conan tiếp tục phá giải những vụ án bí ẩn và truy tìm tổ chức Áo Đen.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "11",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1211",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Những cuộc phiêu lưu mới của máy bán hàng tự động ở thế giới kỳ lạ.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "01",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1201",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Một người đàn ông bị tái sinh thành máy bán hàng tự động ở thế giới khác và bắt đầu cuộc phiêu lưu kỳ lạ cùng những người bạn mới.",
+  },
+  {
+    title: "Kanojo, Okarishimasu 4th Season",
+    name: "Rent-a-Girlfriend Season 4",
+    number: "02",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "kanojo-okarishimasu-4",
+    ep: "/phim/kanojo-okarishimasu-4/tap-1202",
+    view: "0",
+    tags: ["romance", "comedy", "drama"],
+    description:
+      "Tiếp tục câu chuyện tình cảm hài hước giữa Kazuya và các cô bạn gái thuê trong mùa thứ 4.",
+  },
+  {
+    title: "Meitantei Conan",
+    name: "Thám Tử Lừng Danh Conan",
+    number: "03",
+    ccNumber: 1140,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "meitantei-conan",
+    ep: "/phim/meitantei-conan/tap-1140",
+    view: "0",
+    tags: ["detective", "mystery", "shounen"],
+    description:
+      "Cậu thám tử nhí Conan tiếp tục phá giải những vụ án bí ẩn và truy tìm tổ chức Áo Đen.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "11",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1211",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Những cuộc phiêu lưu mới của máy bán hàng tự động ở thế giới kỳ lạ.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "01",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1201",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Một người đàn ông bị tái sinh thành máy bán hàng tự động ở thế giới khác và bắt đầu cuộc phiêu lưu kỳ lạ cùng những người bạn mới.",
+  },
+  {
+    title: "Kanojo, Okarishimasu 4th Season",
+    name: "Rent-a-Girlfriend Season 4",
+    number: "02",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "kanojo-okarishimasu-4",
+    ep: "/phim/kanojo-okarishimasu-4/tap-1202",
+    view: "0",
+    tags: ["romance", "comedy", "drama"],
+    description:
+      "Tiếp tục câu chuyện tình cảm hài hước giữa Kazuya và các cô bạn gái thuê trong mùa thứ 4.",
+  },
+  {
+    title: "Meitantei Conan",
+    name: "Thám Tử Lừng Danh Conan",
+    number: "03",
+    ccNumber: 1140,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "meitantei-conan",
+    ep: "/phim/meitantei-conan/tap-1140",
+    view: "0",
+    tags: ["detective", "mystery", "shounen"],
+    description:
+      "Cậu thám tử nhí Conan tiếp tục phá giải những vụ án bí ẩn và truy tìm tổ chức Áo Đen.",
+  },
+  {
+    title: "Mikadono Sanshimai wa Angai, Choroi.",
+    name: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
+    number: "04",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "mikadono-sanshimai",
+    ep: "/phim/mikadono-sanshimai/tap-1204",
+    view: "0",
+    tags: ["comedy", "romance", "school"],
+    description:
+      "Cuộc sống học đường hài hước xoay quanh ba chị em nhà Mikadono và những tình huống dở khóc dở cười.",
+  },
+  {
+    title: "Sakamoto Days Part 2",
+    name: "SAKAMOTO DAYS Cour 2",
+    number: "05",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "sakamoto-days-part-2",
+    ep: "/phim/sakamoto-days-part-2/tap-1205",
+    view: "0",
+    tags: ["action", "comedy", "shounen"],
+    description:
+      "Sakamoto, sát thủ huyền thoại, tiếp tục bảo vệ gia đình và cửa hàng của mình khỏi những kẻ săn đuổi.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "06",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1206",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Máy bán hàng tự động tiếp tục khám phá thế giới mới và giúp đỡ những người xung quanh.",
+  },
+  {
+    title: "Kanojo, Okarishimasu 4th Season",
+    name: "Rent-a-Girlfriend Season 4",
+    number: "07",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "kanojo-okarishimasu-4",
+    ep: "/phim/kanojo-okarishimasu-4/tap-1207",
+    view: "0",
+    tags: ["romance", "comedy", "drama"],
+    description:
+      "Những rắc rối tình cảm mới xuất hiện khi Kazuya tiếp tục thuê bạn gái.",
+  },
+  {
+    title: "Meitantei Conan",
+    name: "Thám Tử Lừng Danh Conan",
+    number: "08",
+    ccNumber: 1140,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "meitantei-conan",
+    ep: "/phim/meitantei-conan/tap-1140",
+    view: "0",
+    tags: ["detective", "mystery", "shounen"],
+    description:
+      "Conan đối mặt với những vụ án hóc búa và những âm mưu nguy hiểm.",
+  },
+  {
+    title: "Mikadono Sanshimai wa Angai, Choroi.",
+    name: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
+    number: "09",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "mikadono-sanshimai",
+    ep: "/phim/mikadono-sanshimai/tap-1209",
+    view: "0",
+    tags: ["comedy", "romance", "school"],
+    description:
+      "Những câu chuyện hài hước về cuộc sống thường ngày của ba chị em nhà Mikadono.",
+  },
+  {
+    title: "Sakamoto Days Part 2",
+    name: "SAKAMOTO DAYS Cour 2",
+    number: "10",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "sakamoto-days-part-2",
+    ep: "/phim/sakamoto-days-part-2/tap-1210",
+    view: "0",
+    tags: ["action", "comedy", "shounen"],
+    description:
+      "Sakamoto tiếp tục đối đầu với những sát thủ mới và bảo vệ cuộc sống bình yên.",
+  },
+  {
+    title: "Jidou Hanbaiki ni Umarekawatta Ore wa...",
+    name: "Reborn as a Vending Machine, I Now Wander the...",
+    number: "11",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "jidou-hanbaiki",
+    ep: "/phim/jidou-hanbaiki/tap-1211",
+    view: "0",
+    tags: ["isekai", "fantasy", "comedy"],
+    description:
+      "Những cuộc phiêu lưu mới của máy bán hàng tự động ở thế giới kỳ lạ.",
+  },
+  {
+    title: "Kanojo, Okarishimasu 4th Season",
+    name: "Rent-a-Girlfriend Season 4",
+    number: "12",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "kanojo-okarishimasu-4",
+    ep: "/phim/kanojo-okarishimasu-4/tap-1212",
+    view: "0",
+    tags: ["romance", "comedy", "drama"],
+    description:
+      "Kazuya và các cô gái tiếp tục vướng vào những tình huống dở khóc dở cười.",
+  },
+  {
+    title: "Meitantei Conan",
+    name: "Thám Tử Lừng Danh Conan",
+    number: "13",
+    ccNumber: 1140,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "meitantei-conan",
+    ep: "/phim/meitantei-conan/tap-1140",
+    view: "0",
+    tags: ["detective", "mystery", "shounen"],
+    description:
+      "Conan tiếp tục hành trình phá án và tìm kiếm thân phận thật sự.",
+  },
+  {
+    title: "Mikadono Sanshimai wa Angai, Choroi.",
+    name: "Đối Phó Với Chị Em Nhà Mikadono Thật Dễ Dàng",
+    number: "14",
+    ccNumber: 7,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "mikadono-sanshimai",
+    ep: "/phim/mikadono-sanshimai/tap-1214",
+    view: "0",
+    tags: ["comedy", "romance", "school"],
+    description:
+      "Những tình huống hài hước và lãng mạn giữa các thành viên nhà Mikadono.",
+  },
+  {
+    title: "Sakamoto Days Part 2",
+    name: "SAKAMOTO DAYS Cour 2",
+    number: "15",
+    ccNumber: 6,
+    type: "TV",
+    image: "/imgs/movie22.webp",
+    slug: "sakamoto-days-part-2",
+    ep: "/phim/sakamoto-days-part-2/tap-1215",
+    view: "0",
+    tags: ["action", "comedy", "shounen"],
+    description:
+      "Sakamoto tiếp tục bảo vệ gia đình và cửa hàng khỏi những mối nguy hiểm mới.",
+  },
+];
 
 // Lấy anime
 const anime =
@@ -59,16 +645,12 @@ watch(epNumber, (newEp) => {
     episodeGroups[0];
 });
 
-// Video source
-const videoSrc = ref(
-  (anime as any).epVideo || `/videos/tap-${epNumber.value}.mp4`
-);
+// Không cần video source
 
 // Next / Prev episode (cập nhật nhóm luôn)
 function goNextEpisode() {
   if (epNumber.value < totalEpisodes) {
     epNumber.value++;
-    videoSrc.value = `/videos/tap-${epNumber.value}.mp4`;
     router.push(`/phim/${slug}/tap-${epNumber.value}`);
     // cập nhật nhóm ngay lập tức
     selectedGroup.value =
@@ -81,7 +663,6 @@ function goNextEpisode() {
 function goPrevEpisode() {
   if (epNumber.value > 1) {
     epNumber.value--;
-    videoSrc.value = `/videos/tap-${epNumber.value}.mp4`;
     router.push(`/phim/${slug}/tap-${epNumber.value}`);
     // cập nhật nhóm ngay lập tức
     selectedGroup.value =
@@ -161,9 +742,7 @@ const toggleDark = () => (isDark.value = !isDark.value);
             :style="{ width: isExpanded ? '1404px' : '958px' }"
           >
             <transition name="fade" mode="out-in">
-              <video :key="videoSrc" class="w-full h-[653px]" controls autoplay>
-                <source :src="videoSrc" type="video/mp4" />
-              </video>
+              <div class="w-full h-[653px] bg-black"></div>
             </transition>
 
             <!-- Controls -->
@@ -285,7 +864,7 @@ const toggleDark = () => (isDark.value = !isDark.value);
   <div class="flex gap-4 mt-6">
     <!-- Bình luận -->
     <div class="col-span-6 mt-10">
-      <VideoComments  />
+      <VideoComments />
       <!-- đề xuất anime -->
       <Movie
         :items="

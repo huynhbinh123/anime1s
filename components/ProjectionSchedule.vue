@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="w-full flex flex-col lg:justify-between justify-center">
     <!-- Header -->
     <div class="flex justify-between items-center">
-      <h2 class="text-pink-300 font-bold text-2xl mb-4">Lịch Chiếu Anime</h2>
+      <h2 class="lg:flex hidden text-pink-300 font-bold text-2xl mb-4">
+        Lịch Chiếu Anime
+      </h2>
       <div class="flex items-center gap-2">
         <span
           class="bg-gray-200 text-black p-3 rounded-md text-lg font-medium whitespace-nowrap"
@@ -13,13 +15,13 @@
     </div>
 
     <!-- Tabs -->
-    <div class="flex space-x-2 mb-4 items-center justify-between">
+    <div class="flex lg:space-x-2 gap-1 mb-4 items-center justify-between">
       <UButton
         v-for="(day, index) in days"
         :key="index"
         @click="activeDay = index"
         :class="[
-          'px-10 py-2 rounded-md text-lg font-bold mt-4 transition cursor-pointer',
+          'lg:px-10 py-2 rounded-md text-lg font-bold mt-4 transition cursor-pointer',
           activeDay === index
             ? 'bg-pink-300 text-black'
             : 'bg-[#3a3949] text-white hover:bg-[#4a4959]',
@@ -41,9 +43,13 @@
           <span class="text-gray-400 text-lg font-bold w-20 text-center">{{
             anime.time
           }}</span>
-          <span class="text-white text-lg font-bold">{{ anime.title }}</span>
+          <span class="text-white text-lg font-bold line-clamp-1">{{
+            anime.title
+          }}</span>
         </div>
-        <span class="text-white text-base px-2"> {{ anime.episodes }}</span>
+        <span class="text-white text-base px-2 whitespace-nowrap">
+          {{ anime.episodes }}</span
+        >
       </NuxtLink>
 
       <!-- Chỉ hiện khi > 6 -->
@@ -59,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 // Danh sách các ngày
 const days = [

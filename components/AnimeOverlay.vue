@@ -26,13 +26,12 @@
     </p>
     <div class="min-w-full flex justify-start gap-2 items-center">
       <NuxtLink :to="`/phim/${item.slug}`">
-        <UButton
-          :to="`/phim/${item.slug}`"
+        <div
           class="text-black/90 bg-[#ffbade] rounded cursor-pointer p-1.5 w-[200px] flex items-center justify-center gap-1"
         >
           <UIcon name="material-symbols:play-arrow-rounded" size="30" />
           <span class="text-base font-bold">Xem Ngay</span>
-        </UButton>
+        </div>
       </NuxtLink>
       <UButton
         class="cursor-pointer bg-white rounded-3xl flex items-center justify-center p-0.5"

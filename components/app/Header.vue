@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full z-100 h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 backdrop-blur-lg bg-[#181a2c]/70 px-20"
+    class="lg:w-full w-[430px] z-100 h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 backdrop-blur-lg bg-[#181a2c]/70 lg:px-20 px-4"
   >
     <!-- content header -->
     <div class="flex items-center justify-center gap-4">
@@ -39,7 +39,7 @@
               <NuxtLink
                 to="/community/board"
                 class="font-semibold text-sm hover:text-[#ffbade]"
-                >Community</NuxtLink
+                >Cộng đồng</NuxtLink
               >
             </div>
 
@@ -80,7 +80,7 @@
       </NuxtLink>
 
       <div
-        class="flex items-center justify-between gap-2 border rounded bg-white px-2 w-[298px] h-[40px]"
+        class="lg:flex hidden items-center justify-between gap-2 border rounded bg-white px-2 w-[298px] h-[40px]"
       >
         <input
           placeholder="Tìm anime ..."
@@ -88,31 +88,28 @@
         />
         <UIcon name="i-lucide-search" size="20" class="text-black" />
       </div>
-      <div class="flex flex-col items-center justify-center">
+
+      <div class="lg:flex hidden flex-col items-center justify-center">
         <UIcon
           name="lets-icons:sort-random"
           size="26"
           class="cursor-pointer bg-[#ffbade]"
         />
-        <span class="font-semibold text-sm">Random</span>
+        <span class="font-semibold text-sm">Ngẫu nhiên</span>
       </div>
-      <div class="flex flex-col items-center justify-center">
+      <div class="lg:flex hidden flex-col items-center justify-center">
         <UIcon
           name="jam:messages-f"
           size="26"
           class="cursor-pointer bg-[#ffbade]"
         />
-        <span class="font-semibold text-sm">Community</span>
+        <span class="font-semibold text-sm">Cộng đồng</span>
       </div>
     </div>
-    <div>
-      <UButton>
-        <span
-          class="font-bold text-base text-black rounded px-4 py-2 cursor-pointer bg-[#ffbade]"
-          >Login</span
-        >
-      </UButton>
-    </div>
+
+    <!-- đăng nhập và user -->
+
+    <AppUserLogin />
   </div>
 </template>
 
@@ -121,9 +118,8 @@ const isOpen = ref(false);
 
 const list = [
   { name: "Trang chủ", to: "/trang-chu" },
-  { name: "Phim lẻ", to: "/phim-le" },
-  { name: "Phim bộ", to: "/phim-bo" },
-  { name: "Lịch Chiếu anime", to: "/lich-chieu" },
+  { name: "Phim lẻ", to: "/danh-sach-phim" },
+  { name: "Phim bộ", to: "/danh-sach-phim" },
   { name: "Thể loại", to: "/the-loai" },
 ];
 const categories = [

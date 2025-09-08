@@ -47,14 +47,14 @@
       </div>
     </div>
 
-    <!-- 👤 Avatar -->
+    <!--  Avatar -->
     <UAvatar
       src="https://github.com/benjamincanac.png"
       class="cursor-pointer"
       @click="isProfile = !isProfile"
     />
 
-    <!-- 👤 Dropdown Profile -->
+    <!--  Dropdown Profile -->
     <div
       v-if="isProfile"
       ref="profileRef"

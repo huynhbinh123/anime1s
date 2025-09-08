@@ -1,6 +1,6 @@
 <!-- pages/index.vue -->
 <template>
-  <div class="flex flex-col text-white mt-[80px]">
+  <div class="flex flex-col w-full text-white mt-[80px]">
     <ListMovie />
 
     <div class="mt-10">

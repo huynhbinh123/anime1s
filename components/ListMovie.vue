@@ -1,29 +1,19 @@
 <template>
-  <div class="relative">
-    <!-- Slider Ảnh -->
-    <Swiper
-      :pagination="{ dynamicBullets: true }"
-      :modules="modules"
-      class="w-full lg:h-[500px] h-[320px] rounded-lg"
-      loop
-      :navigation="{
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }"
-    >
-      <SwiperSlide v-for="(item, i) in movieList" :key="i">
-        <img
-          :src="item.image"
-          loop
-          :alt="`Slide ${i + 1}`"
-          class="w-full lg:h-[500px] h-[320px] object-cover rounded-lg opacity-40"
-        />
-
+  <!-- Slider Ảnh -->
+  <UCarousel
+    v-model:page="page"
+    dots
+    loop
+    v-slot="{ item }"
+    :items="movieList"
+    :ui="{ item: 'basis-full' }"
+    class="w-full mx-auto"
+  >
+    <div class="relative">
+      <div class="grid grid-cols-3">
         <!-- Phần Thông Tin đè lên slider -->
-        <div
-          class="absolute lg:top-16 top-16 left-12 w-full h-full flex items-center z-20"
-        >
-          <div class="text-white lg:max-w-1/2 w-[340px]">
+        <div class="col-span-1 w-full h-full flex items-center z-20">
+          <div class="text-white lg:w-[800px] w-[330px]">
             <span class="text-[#ffbade] lg:text-lg text-sm font-bold rounded">
               {{ item.rank }}
             </span>
@@ -57,7 +47,7 @@
                 HD
               </span>
             </div>
-            <p class="lg:flex hidden text-lg mb-6 line-clamp-3">
+            <p class="hidden lg:block text-lg mb-6 !line-clamp-3">
               {{ item.description }}
             </p>
 
@@ -95,19 +85,73 @@
             </div>
           </div>
         </div>
-      </SwiperSlide>
-      <!-- Nút Prev/Next -->
-      <div class="swiper-button-prev !text-[#ffbade]"></div>
-      <div class="swiper-button-next !text-[#ffbade]"></div>
-    </Swiper>
-  </div>
+        <div class="relative col-span-2">
+          <img
+            :src="item.image"
+            class="w-full lg:h-[460px] h-[320px] object-cover rounded-lg brightness-110"
+            style="
+              -webkit-mask-image: linear-gradient(
+                  270deg,
+                  transparent 0%,
+                  rgba(32, 31, 49, 1) 10%,
+                  transparent 100%
+                ),
+                linear-gradient(
+                  180deg,
+                  transparent 0%,
+                  rgba(32, 31, 49, 1) 10%,
+                  transparent 100%
+                );
+              -webkit-mask-repeat: no-repeat;
+              -webkit-mask-composite: source-in;
+              mask-image: linear-gradient(
+                  270deg,
+                  transparent 0%,
+                  rgba(32, 31, 49, 1) 10%,
+                  transparent 100%
+                ),
+                linear-gradient(
+                  180deg,
+                  transparent 0%,
+                  rgba(32, 31, 49, 1) 10%,
+                  transparent 100%
+                );
+              mask-repeat: no-repeat;
+              mask-composite: intersect;
+            "
+          />
+          <!-- <div class="flex flex-col gap-2 absolute bottom-2 right-4">
+            <div
+              class="px-3 py-2 w-[48px] h-[40px] bg-[#ffffff1a] rounded-lg cursor-pointer hover:bg-[#ffbade] hover:text-black"
+              @click="prevSlide"
+            >
+              <UIcon name="material-symbols:arrow-left-alt" size="26"></UIcon>
+            </div>
+            <div
+              class="px-3 py-2 w-[48px] h-[40px] bg-[#ffffff1a] rounded-lg cursor-pointer hover:bg-[#ffbade] hover:text-black"
+              @click="nextSlide"
+            >
+              <UIcon name="material-symbols:arrow-right-alt" size="26"></UIcon>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </UCarousel>
 </template>
+
 <script lang="ts" setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
+import { ref } from "vue";
+
+const page = ref(0);
+
+const nextSlide = () => {
+  page.value = (page.value + 1) % movieList.length;
+};
+
+const prevSlide = () => {
+  page.value = (page.value - 1 + movieList.length) % movieList.length;
+};
 
 const movieList = [
   {
@@ -119,7 +163,7 @@ const movieList = [
     view: "24",
     image: "/imgs/rank1.webp",
     description:
-      "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.",
+      "Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả,hành trình trở thành Vua Hải Tặc trên biển cả,hành trình trở thành Vua Hải Tặc trên biển cả,hành trình trở thành Vua Hải Tặc trên biển cả, hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Luffy và hành trình trở thành Vua Hải Tặc trên biển cả, khám phá kho báu One Piece.Câu chuyện về Monkey D. Lu",
     ep: "/phim/one-piece/tap-1201",
     slug: "one-piece",
     tags: ["Action", "Adventure", "Fantasy", "Shounen"],
@@ -216,7 +260,6 @@ const movieList = [
     tags: ["Psychological", "Thriller", "Supernatural"],
   },
 ];
-const modules = [Pagination, Navigation];
 </script>
 
 <style scoped></style>

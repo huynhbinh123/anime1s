@@ -120,7 +120,7 @@ const user = {
 const userProfile = [
   {
     icon: "material-symbols:account-circle",
-    title: "Profile",
+    title: "Tài khoản",
     link: "/user/profile",
   },
   {

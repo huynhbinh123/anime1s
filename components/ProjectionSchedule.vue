@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-col lg:justify-between justify-center">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex lg:justify-between justify-center items-center">
       <h2 class="lg:flex hidden text-pink-300 font-bold text-2xl mb-4">
         Lịch Chiếu Anime
       </h2>
@@ -15,13 +15,13 @@
     </div>
 
     <!-- Tabs -->
-    <div class="flex lg:space-x-2 gap-1 mb-4 items-center justify-between">
+    <div class="grid grid-cols-7 gap-1 mb-4 items-center justify-between">
       <UButton
         v-for="(day, index) in days"
         :key="index"
         @click="activeDay = index"
         :class="[
-          'lg:px-10 py-2 rounded-md text-lg font-bold mt-4 transition cursor-pointer',
+          'rounded-md text-lg font-bold mt-4 transition cursor-pointer flex justify-center',
           activeDay === index
             ? 'bg-pink-300 text-black'
             : 'bg-[#3a3949] text-white hover:bg-[#4a4959]',

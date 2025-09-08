@@ -43,12 +43,12 @@ const toggleShow = () => {
   <div class="">
     <h2 class="text-pink-300 font-bold text-2xl mb-3">Thể loại</h2>
     <div class="bg-[#2a293b] p-6 rounded-lg">
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid lg:grid-cols-2 grid-cols-3 gap-3">
         <NuxtLink
           v-for="(cat, index) in displayedCategories"
           :key="index"
           :to="`/the-loai/${cat.name.toLowerCase().replace(/ /g, '-')}`"
-          :class="`${cat.color} text-base font-bold white-space-nowrap cursor-pointer py-2 hover:underline`"
+          :class="`${cat.color} text-base font-bold whitespace-nowrap cursor-pointer py-2 hover:underline`"
         >
           {{ cat.name }}
         </NuxtLink>

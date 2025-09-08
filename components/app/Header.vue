@@ -1,9 +1,10 @@
 <template>
   <div
-    class="lg:w-full w-[430px] z-100 h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 backdrop-blur-lg bg-[#181a2c]/70 lg:px-20 px-4"
+    class="w-full z-100 h-[84px] flex items-center justify-between py-2 fixed top-0 left-0 backdrop-blur-lg bg-[#181a2c]/70 lg:px-20 px-4"
   >
     <!-- content header -->
     <div class="flex items-center justify-center gap-4">
+      <!-- Nút menu mobile -->
       <USlideover
         v-model:open="isOpen"
         side="left"
@@ -17,14 +18,15 @@
         />
 
         <template #content>
-          <div class="h-full bg-[#181a2c] text-white p-4">
+          <!-- nội dung menu mobile -->
+          <div class="h-full bg-[#181a2c] text-white p-4 overflow-y-auto">
             <!-- nút close -->
             <div
               class="flex items-center gap-2 py-1 cursor-pointer hover:text-[#ffbade] transition"
               @click="isOpen = false"
             >
               <UIcon name="ic:baseline-keyboard-arrow-left" size="20" />
-              <span class="font-bold text-base">Close Menu</span>
+              <span class="font-bold text-base">Đóng</span>
             </div>
 
             <!-- community -->
@@ -32,63 +34,65 @@
               class="flex items-center justify-center bg-[#32354e] mt-6 p-2 rounded-3xl gap-2"
             >
               <UIcon
-                name="jam:messages-f"
+                name="ic:outline-ondemand-video"
                 size="26"
                 class="cursor-pointer bg-[#ffbade]"
               />
               <NuxtLink
-                to="/community/board"
+                to="/danh-sach-phim"
                 class="font-semibold text-sm hover:text-[#ffbade]"
-                >Cộng đồng</NuxtLink
+                >Danh sách phim</NuxtLink
               >
             </div>
 
             <!-- nav list -->
-            <div class="flex flex-col gap-2">
-              <ul>
-                <li
-                  v-for="i in list"
-                  class="py-4 rounded hover:text-[#ffbade] font-bold border-b border-gray-100 cursor-pointer w-full"
-                >
-                  <NuxtLink :to="i.to">{{ i.name }}</NuxtLink>
-                </li>
+            <ul class="flex flex-col gap-2 mt-4">
+              <li
+                v-for="i in list"
+                :key="i.to"
+                class="py-4 rounded hover:text-[#ffbade] font-bold border-b border-gray-100 cursor-pointer w-full"
+              >
+                <NuxtLink :to="i.to">{{ i.name }}</NuxtLink>
+              </li>
+            </ul>
 
-                <div class="grid grid-cols-2 gap-1 mt-4">
-                  <NuxtLink
-                    v-for="(cat, index) in categories"
-                    :key="index"
-                    :to="`/the-loai/${cat.name
-                      .toLowerCase()
-                      .replace(/ /g, '-')}`"
-                    :class="`${cat.color} text-sm font-bold cursor-pointer py-2 hover:underline`"
-                  >
-                    {{ cat.name }}
-                  </NuxtLink>
-                </div>
-              </ul>
+            <!-- categories -->
+            <div class="grid grid-cols-2 gap-1 mt-4">
+              <NuxtLink
+                v-for="(cat, index) in categories"
+                :key="index"
+                :to="`/the-loai/${cat.name.toLowerCase().replace(/ /g, '-')}`"
+                :class="`${cat.color} text-sm font-bold cursor-pointer py-2 hover:underline`"
+              >
+                {{ cat.name }}
+              </NuxtLink>
             </div>
           </div>
         </template>
       </USlideover>
+
+      <!-- Logo -->
       <NuxtLink to="/">
         <img
           src="/imgs/animew-logo.webp"
           alt="logo"
-          width="160"
+          width="140"
           class="cursor-pointer"
         />
       </NuxtLink>
 
+      <!-- Search desktop -->
       <div
         class="lg:flex hidden items-center justify-between gap-2 border rounded bg-white px-2 w-[298px] h-[40px]"
       >
         <input
           placeholder="Tìm anime ..."
-          class="text-black/60 flex items-center text-lg font-semibold outline-none"
+          class="text-black/60 flex-1 text-lg font-semibold outline-none"
         />
         <UIcon name="i-lucide-search" size="20" class="text-black" />
       </div>
 
+      <!-- icon desktop -->
       <div class="lg:flex hidden flex-col items-center justify-center">
         <UIcon
           name="lets-icons:sort-random"
@@ -97,18 +101,20 @@
         />
         <span class="font-semibold text-sm">Ngẫu nhiên</span>
       </div>
-      <div class="lg:flex hidden flex-col items-center justify-center">
+      <NuxtLink
+        to="/danh-sach-phim"
+        class="lg:flex hidden flex-col items-center justify-center"
+      >
         <UIcon
-          name="jam:messages-f"
+          name="ic:outline-ondemand-video"
           size="26"
           class="cursor-pointer bg-[#ffbade]"
         />
-        <span class="font-semibold text-sm">Cộng đồng</span>
-      </div>
+        <span class="font-semibold text-sm">Danh sách phim</span>
+      </NuxtLink>
     </div>
 
     <!-- đăng nhập và user -->
-
     <AppUserLogin />
   </div>
 </template>

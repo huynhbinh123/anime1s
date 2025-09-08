@@ -724,88 +724,93 @@ const toggleDark = () => (isDark.value = !isDark.value);
         </div>
 
         <!-- Content -->
-        <div class="flex w-full p-2 gap-2">
-          <!-- Danh sách tập -->
-          <VideoEpisodeList
-            :episodeGroups="episodeGroups"
-            :selectedGroup="selectedGroup"
-            :searchEpisode="searchEpisode"
-            :epNumber="epNumber"
-            :animeSlug="anime.slug"
-            @update:selectedGroup="selectedGroup = $event"
-            @update:searchEpisode="searchEpisode = $event"
-          />
+        <div class="flex lg:flex-row flex-col w-full p-2 gap-2">
+          <div class="flex flex-1 lg:flex-row flex-col-reverse">
+            <!-- Danh sách tập -->
+            <VideoEpisodeList
+              :episodeGroups="episodeGroups"
+              :selectedGroup="selectedGroup"
+              :searchEpisode="searchEpisode"
+              :epNumber="epNumber"
+              :animeSlug="anime.slug"
+              @update:selectedGroup="selectedGroup = $event"
+              @update:searchEpisode="searchEpisode = $event"
+            />
 
-          <!-- Cột video + chi tiết -->
-          <div
-            class="flex-1 flex flex-col bg-black rounded-lg shadow-lg overflow-hidden z-50 transition-all duration-500 ease-in-out"
-            :style="{ width: isExpanded ? '1404px' : '958px' }"
-          >
-            <transition name="fade" mode="out-in">
-              <div class="w-full h-[653px] bg-black"></div>
-            </transition>
-
-            <!-- Controls -->
-            <div class="flex-none flex justify-between p-4 bg-black/80">
-              <div class="flex items-center gap-1">
-                <button
-                  @click="toggleExpand"
-                  class="flex items-center gap-1 w-[100px] cursor-pointer"
-                >
-                  <UIcon
-                    :name="
-                      isExpanded
-                        ? 'material-symbols:zoom-in-map-rounded'
-                        : 'material-symbols:zoom-out-map-rounded'
-                    "
-                    size="20"
-                  />
-                  <span>{{ isExpanded ? "Thu gọn" : "Mở Rộng" }}</span>
-                </button>
-                <button
-                  @click="toggleDark"
-                  class="flex items-center gap-1 cursor-pointer"
-                >
-                  <UIcon
-                    name="lets-icons:lamp-fill"
-                    size="20"
-                    :class="isDark ? 'text-yellow-500' : 'text-white'"
-                  />
-                  <span :class="isDark ? 'text-yellow-500' : 'text-white'">
-                    {{ isDark ? "Bật đèn" : "Tắt đèn" }}
-                  </span>
-                </button>
-              </div>
-              <div class="flex items-center gap-3">
+            <!-- Cột video + chi tiết -->
+            <div
+              class="flex-1 flex flex-col bg-black mb-4 rounded-lg shadow-lg overflow-hidden z-50 transition-all duration-500 ease-in-out"
+              :style="{
+                width: isExpanded ? '1404px lg:block' : '958px hidden',
+              }"
+            >
+              <transition name="fade" mode="out-in">
                 <div
-                  class="flex items-center gap-1 cursor-pointer hover:text-[#ffbade]"
-                  @click="goPrevEpisode"
-                >
-                  <UIcon name="zondicons:step-backward" size="20" />
-                  <span>Tập trước</span>
+                  class="lg:w-full w-[430px] lg:h-[653px] h-[199px] bg-black"
+                ></div>
+              </transition>
+
+              <!-- Controls -->
+              <div class="flex-none flex justify-between p-4 bg-black/80">
+                <div class="flex items-center gap-1">
+                  <button
+                    @click="toggleExpand"
+                    class="lg:flex hidden items-center gap-1 w-[100px] cursor-pointer"
+                  >
+                    <UIcon
+                      :name="
+                        isExpanded
+                          ? 'material-symbols:zoom-in-map-rounded'
+                          : 'material-symbols:zoom-out-map-rounded'
+                      "
+                      size="20"
+                    />
+                    <span>{{ isExpanded ? "Thu gọn" : "Mở Rộng" }}</span>
+                  </button>
+                  <button
+                    @click="toggleDark"
+                    class="flex items-center gap-1 cursor-pointer"
+                  >
+                    <UIcon
+                      name="lets-icons:lamp-fill"
+                      size="20"
+                      :class="isDark ? 'text-yellow-500' : 'text-white'"
+                    />
+                    <span :class="isDark ? 'text-yellow-500' : 'text-white'">
+                      {{ isDark ? "Bật đèn" : "Tắt đèn" }}
+                    </span>
+                  </button>
                 </div>
-                <div
-                  class="flex items-center gap-1 cursor-pointer hover:text-[#ffbade]"
-                  @click="goNextEpisode"
-                >
-                  <span>Tập sau</span>
-                  <UIcon name="material-symbols:skip-next" size="20" />
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex items-center gap-1 cursor-pointer hover:text-[#ffbade]"
+                    @click="goPrevEpisode"
+                  >
+                    <UIcon name="zondicons:step-backward" size="20" />
+                    <span class="lg:block hidden">Tập trước</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1 cursor-pointer hover:text-[#ffbade]"
+                    @click="goNextEpisode"
+                  >
+                    <span class="lg:block hidden">Tập sau</span>
+                    <UIcon name="material-symbols:skip-next" size="20" />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Video server + related -->
-            <div :class="isDark ? 'bg-black/90 duration-500 opacity-5' : ''">
-              <VideoServerSelector :epNumber="epNumber" />
-              <VideoRelatedAnime :animeList="animeNewAdded" />
+              <!-- Video server + related -->
+              <div :class="isDark ? 'bg-black/90 duration-500 opacity-5' : ''">
+                <VideoServerSelector :epNumber="epNumber" />
+                <VideoRelatedAnime :animeList="animeNewAdded" />
+              </div>
             </div>
           </div>
-
           <!-- Cột phải: Thông tin anime -->
           <transition name="slide-fade">
-            <div v-if="!isExpanded" class="w-[450px] flex-shrink-0">
+            <div v-if="!isExpanded" class="lg:w-[450px] w-full flex-shrink-0">
               <div class="flex flex-col gap-6">
-                <div class="flex flex-col">
+                <div class="flex flex-col lg:items-start items-center">
                   <!-- Poster -->
                   <div class="w-[127px] h-[177px] mt-2 flex-shrink-0">
                     <img
@@ -861,9 +866,9 @@ const toggleDark = () => (isDark.value = !isDark.value);
     </div>
   </div>
   <!-- comment + top -->
-  <div class="flex gap-4 mt-6">
+  <div class="flex lg:flex-row flex-col gap-4 mt-6">
     <!-- Bình luận -->
-    <div class="col-span-6 mt-10">
+    <div class="lg:col-span-6 flex flex-col mt-10">
       <VideoComments />
       <!-- đề xuất anime -->
       <Movie
@@ -879,7 +884,7 @@ const toggleDark = () => (isDark.value = !isDark.value);
     </div>
 
     <!-- Thịnh Hành -->
-    <div class="col-span-2">
+    <div class="lg:col-span-2">
       <TopAnime :showTabs="false" title="Thịnh Hành" />
     </div>
   </div>

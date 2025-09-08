@@ -181,7 +181,7 @@ const activeTab = ref("Today");
         <div
           v-for="(item, index) in animes.slice(0, 10)"
           :key="item.slug"
-          class="flex items-center gap-3 p-2 hover:bg-gray-700 rounded-lg transition"
+          class="flex items-center gap-3 p-2 hover:bg-gray-700 rounded-lg overflow-hidden transition"
         >
           <!-- Number -->
           <span

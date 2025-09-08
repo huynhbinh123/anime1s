@@ -1,6 +1,6 @@
 <template>
   <!-- đề xuất -->
-  <div class="grid grid-cols-8 gap-8 mt-10">
+  <div class="lg:grid lg:grid-cols-8 flex flex-col gap-8 mt-10">
     <div class="col-span-6 mt-11">
       <Movie
         :items="paginatedItems"

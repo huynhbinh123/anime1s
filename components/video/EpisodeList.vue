@@ -64,7 +64,7 @@ onBeforeUnmount(() =>
 </script>
 
 <template>
-  <div ref="dropdownRef" class="p-3 rounded-lg relative w-[327px]">
+  <div ref="dropdownRef" class="rounded-lg relative lg:w-[294px] w-full">
     <h3 class="font-bold text-white mb-2">Danh sách tập</h3>
 
     <div class="flex items-center justify-between mb-3 gap-1 cursor-pointer">
@@ -76,11 +76,7 @@ onBeforeUnmount(() =>
         <UIcon name="material-symbols:arrow-drop-down" size="20" />
       </div>
 
-      <UInput
-        placeholder="Tìm tập..."
-        class="w-full pr-7"
-        v-model="localSearch"
-      />
+      <UInput placeholder="Tìm tập..." class="w-full" v-model="localSearch" />
     </div>
 
     <!-- Dropdown nhóm -->
@@ -100,13 +96,13 @@ onBeforeUnmount(() =>
 
     <!-- Các tập -->
     <div
-      class="flex flex-wrap gap-2 w-[294px] overflow-y-auto mt-3 max-h-[640px] justify-start"
+      class="grid grid-cols-5 gap-2 lg:w-[294px] w-full overflow-y-auto mt-3"
     >
       <NuxtLink
         v-for="num in filteredEpisodes"
         :key="num"
         :to="`/phim/${props.animeSlug}/tap-${num}`"
-        class="w-[48px] h-[28px] px-4 py-1 text-sm flex justify-center items-center text-white bg-gray-700 rounded hover:bg-pink-300 hover:text-black transition"
+        class="h-[28px] px-4 py-1 text-sm flex justify-center items-center text-white bg-gray-700 rounded hover:bg-pink-300 hover:text-black transition"
         :class="props.epNumber === num ? 'bg-pink-300 text-black' : ''"
       >
         {{ num }}

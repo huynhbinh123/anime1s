@@ -7,13 +7,13 @@
         <h1 class="text-2xl font-bold">Hi, huynhbinh12345</h1>
         <nav class="mt-3 flex justify-center space-x-8 text-sm font-medium">
           <a href="#" class="flex items-center gap-2 hover:text-pink-400">
-            <span class="material-icons">person</span> Profile
+            Tài khoản
           </a>
           <a href="#" class="flex items-center gap-2 hover:text-pink-400">
-            <span class="material-icons">history</span> Tiếp tục xem
+            Tiếp tục xem
           </a>
           <a href="#" class="flex items-center gap-2 hover:text-pink-400">
-            <span class="material-icons">favorite</span> Tủ phim
+            Tủ phim
           </a>
         </nav>
       </div>

@@ -358,9 +358,11 @@ const animeNewAdded = [
 <template>
   <div class="bg-gradient-to-br from-gray-900 to-gray-600 text-white mt-17">
     <!-- movie -->
-    <div class="max-w-8xl px-6 py-12 flex gap-10">
+    <div
+      class="w-full px-6 py-12 flex lg:flex-row justify-between flex-col gap-10"
+    >
       <!-- Cột trái -->
-      <div class="flex-1 flex flex-col gap-2 ml-40">
+      <div class="flex flex-col gap-2 lg:ml-40 ml-2">
         <div class="flex flex-col">
           <!-- Breadcrumb -->
           <div class="text-base font-bold flex items-center gap-2 text-white">
@@ -386,7 +388,9 @@ const animeNewAdded = [
         </div>
 
         <!-- Thông tin chính + Poster -->
-        <div class="flex justify-start gap-12">
+        <div
+          class="flex lg:flex-row flex-col lg:items-start items-center justify-start gap-12"
+        >
           <!-- Poster -->
           <div class="w-[180px] h-[225px] mt-2 flex-shrink-0">
             <img
@@ -395,7 +399,7 @@ const animeNewAdded = [
               class="rounded-lg shadow-lg h-full w-full object-cover"
             />
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col lg:items-start items-center gap-2">
             <!-- Title -->
             <NuxtLink :to="anime.slug" class="text-4xl font-bold">{{
               anime.title
@@ -403,7 +407,7 @@ const animeNewAdded = [
             <p class="text-lg text-gray-300">{{ anime.name }}</p>
 
             <!-- Badge -->
-            <div class="flex items-center gap-2">
+            <div class="flex lg:items-start items-center gap-2">
               <span
                 class="bg-[#b0e3af] text-black flex items-center px-1 py-1 rounded text-sm font-bold"
               >
@@ -448,7 +452,9 @@ const animeNewAdded = [
       </div>
 
       <!-- Cột phải -->
-      <div class="w-[260px] flex-shrink-0 border-l border-gray-700 pl-6">
+      <div
+        class="w-[260px] flex flex-col flex-shrink-0 border-l border-gray-700 lg:px-6"
+      >
         <p class="mb-2">
           <span class="font-semibold text-white">Tập:</span>
           {{ anime.epNumber }}
@@ -478,8 +484,8 @@ const animeNewAdded = [
     </div>
   </div>
   <!-- đề xuất -->
-  <div class="grid grid-cols-8 gap-8">
-    <div class="col-span-6 mt-11">
+  <div class="flex flex-col lg:grid lg:grid-cols-8 gap-8">
+    <div class="lg:col-span-6 mt-11">
       <Movie
         :items="
           animeNewAdded.slice(0, 12).map((item) => ({
@@ -491,7 +497,7 @@ const animeNewAdded = [
         slug="phim-moi-cap-nhat"
       />
     </div>
-    <div class="col-span-2">
+    <div class="lg:col-span-2">
       <TopAnime :showTabs="false" title="Thịnh Hành" />
     </div>
   </div>
